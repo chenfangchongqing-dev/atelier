@@ -160,6 +160,24 @@
     .message-text .msg-space { margin-top: 5px; }
     .message-text strong { font-weight: 650; }
     .message-text a { color: #346d95; text-decoration: underline; text-underline-offset: 2px; }
+    /* Key reference supplied by the client, highlighted without altering the message. */
+    .client-reference {
+      margin-top: 11px; padding: 10px 13px 12px;
+      border-left: 3px solid #dbb95a; border-radius: 5px;
+      background: #fff8df;
+    }
+    .client-reference__lead {
+      font-weight: 650; color: #5c4826;
+      background: linear-gradient(transparent 58%, rgba(255, 225, 119, .72) 58%);
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+    .client-reference .client-reference__url { margin-top: 4px; }
+    .client-reference__url a {
+      font-weight: 660; color: #285e89;
+      text-decoration-thickness: 1.3px;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
     .composer {
       height: 151px; flex: 0 0 151px; border-top: 1px solid #e1e1e1; padding: 16px 26px 18px;
       background: #f5f5f5;
@@ -487,8 +505,10 @@
             <div class="message-bubble">
               <div class="message-text">
                 <p>目前没有现成的汉法术语表。希望你们在翻译过程中同步整理术语，逐步完善我们的术语平台。</p>
-                <p class="msg-space">现有英文门户网站可供参考：</p>
-                <p><a href="https://english.cq.gov.cn/" target="_blank" rel="noopener noreferrer">https://english.cq.gov.cn/</a></p>
+                <div class="client-reference">
+                  <p><span class="client-reference__lead">现有英文门户网站可供参考：</span></p>
+                  <p class="client-reference__url"><a href="https://english.cq.gov.cn/" target="_blank" rel="noopener noreferrer">https://english.cq.gov.cn/</a></p>
+                </div>
               </div>
             </div>
           </div>
