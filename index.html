@@ -322,6 +322,19 @@
           </div>
           <div class="pm-avatar" aria-hidden="true">PM</div>
         </article>
+        <article class="message-row" id="customerReply02" hidden aria-label="客户关于术语资源的回复" style="margin-top: 18px;">
+          <div class="client-avatar" aria-hidden="true">客</div>
+          <div class="message-wrapper">
+            <div class="sender">客户</div>
+            <div class="message-bubble">
+              <div class="message-text">
+                <p>目前没有现成的汉法术语表。希望你们在翻译过程中同步整理术语，逐步完善我们的术语平台。</p>
+                <p class="msg-space">现有英文门户网站可供参考：</p>
+                <p><a href="https://english.cq.gov.cn/" target="_blank" rel="noopener noreferrer">https://english.cq.gov.cn/</a></p>
+              </div>
+            </div>
+          </div>
+        </article>
       </section>
       <div class="composer" aria-label="聊天输入区域（课堂情境模拟）">
         <div class="composer-toolbar" aria-hidden="true">
@@ -342,14 +355,31 @@
   </div>
 </div>
   <script>
-    // First classroom scenario: reveal the PM's reply only when prompted.
+    // Reveal successive chat messages while the instructor controls the pacing.
     const reply = document.getElementById('pmReply01');
+    const customerReply = document.getElementById('customerReply02');
     const conversation = document.querySelector('.message-list');
     const prompts = document.querySelectorAll('[data-reveal-pm]');
+    let stage = 0;
     prompts.forEach(prompt => {
       prompt.addEventListener('click', () => {
-        reply.hidden = false;
-        prompts.forEach(item => item.setAttribute('aria-expanded', 'true'));
+        if (stage === 0) {
+          reply.hidden = false;
+          prompts.forEach(item => {
+            item.textContent = '查看客户回复';
+            item.setAttribute('aria-controls', 'customerReply02');
+            item.setAttribute('aria-expanded', 'false');
+          });
+          stage = 1;
+        } else if (stage === 1) {
+          customerReply.hidden = false;
+          prompts.forEach(item => {
+            item.textContent = '客户回复已显示';
+            item.setAttribute('aria-expanded', 'true');
+            item.disabled = true;
+          });
+          stage = 2;
+        }
         conversation.scrollTop = conversation.scrollHeight;
       });
     });
