@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>AI赋能翻译项目管理 · 实操导入</title>
+<style>
+:root{
+  --bg:#f5f6f2;--paper:#fff;--cream:#faf9f5;--ink:#17382d;
+  --text:#284237;--muted:#6f8076;--line:#dbe5dc;--green:#285f48;
+  --green2:#4f8d68;--mist:#e8f2e9;--tan:#b88d65;--lighttan:#f5ece3;
+  --sky:#e8eff1;--shadow:0 16px 48px rgba(35,57,42,.07)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid #7ab38e;outline-offset:3px}
+.wrap{width:min(1440px,calc(100% - 92px));margin:0 auto}
+.topbar{background:rgba(255,255,255,.92);border-bottom:1px solid #e2e8e0}
+.top-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:13px;min-width:0}
+.brand-icon{width:39px;height:39px;display:grid;place-items:center;background:var(--green);color:#fff;border-radius:12px;font-weight:800;font-size:17px}
+.brand-text{display:flex;flex-direction:column;gap:0;white-space:nowrap;min-width:0}
+.brand-text strong{font-size:15px;letter-spacing:.015em;overflow:hidden;text-overflow:ellipsis}
+.brand-text span{font-size:12px;color:var(--muted)}
+.top-right{display:flex;align-items:center;gap:15px}
+.stage-pill{border:1px solid #d4e4d6;background:#eff6ee;color:#50765e;padding:7px 13px;border-radius:50px;font-size:12px;font-weight:700;white-space:nowrap}
+.back-link{color:#50665a;font-size:13px;white-space:nowrap}
+.back-link:hover{color:var(--green)}
+main{padding-bottom:82px}
+.hero{padding:66px 0 40px;display:grid;grid-template-columns:1.12fr .88fr;gap:5vw;align-items:center}
+.eyebrow{color:#6a9077;font-weight:750;font-size:12px;letter-spacing:.20em}
+.hero h1{margin:17px 0 21px;font-size:clamp(38px,3.7vw,63px);line-height:1.25;letter-spacing:-.06em;max-width:800px;font-weight:760}
+.hero h1 em{font-style:normal;color:#397b58}
+.intro{font-size:17px;color:#62766a;line-height:1.9;max-width:720px;margin:0}
+.hero-visual{min-height:270px;padding:26px;position:relative;border-radius:25px;border:1px solid #dee8dd;background:linear-gradient(155deg,#fff 8%,#edf5eb 100%);box-shadow:var(--shadow);overflow:hidden}
+.hero-visual:before{content:"";position:absolute;right:-60px;top:-110px;border:60px solid rgba(138,184,142,.14);border-radius:50%;width:190px;height:190px}
+.hero-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;font-size:12px;font-weight:750;letter-spacing:.08em;color:#557962}
+.hero-label .mini{color:#a1ad9f;font-size:11px}
+.mini-flow{display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr;align-items:center;gap:9px;margin:0 0 26px}
+.mini-tile{min-height:96px;border:1px solid #cfe2d1;border-radius:14px;background:rgba(255,255,255,.9);display:flex;justify-content:center;align-items:center;flex-direction:column;gap:4px;position:relative;z-index:1;padding:11px 5px;text-align:center}
+.mini-tile b{font-size:17px}
+.mini-tile small{font-size:11px;color:#758a7c}
+.mini-tile.em{background:#dcebdc;border-color:#b9d8bf}
+.mini-arrow{font-size:20px;color:#c49d75;text-align:center}
+.hero-foot{display:flex;align-items:center;gap:9px;color:#667a6e;font-size:13px;border-top:1px solid #d7e7d7;padding-top:19px}
+.hero-foot .dot{width:7px;height:7px;border-radius:50%;background:#5d9b70}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:28px 0 23px}
+.section-head h2{font-size:clamp(26px,2.2vw,33px);margin:6px 0 0;letter-spacing:-.03em}
+.section-head p{font-size:13px;color:var(--muted);margin:0 0 4px}
+.flow-section{scroll-margin-top:20px}
+.timeline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.phase{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-height:211px;padding:19px 17px 18px;border:1px solid #dce5dd;border-radius:19px;background:#fff;transition:transform .18s,border-color .18s,box-shadow .18s;box-shadow:0 7px 18px rgba(40,68,49,.025);color:var(--ink)}
+.phase:hover{transform:translateY(-3px);border-color:#90b9a0;box-shadow:var(--shadow)}
+.phase[aria-pressed="true"]{background:linear-gradient(145deg,#f0f8ef,#fff);border:2px solid #4c8a60;padding:18px 16px 17px;box-shadow:0 10px 30px rgba(62,117,81,.11)}
+.phase-top{width:100%;display:flex;align-items:center;justify-content:space-between;margin-bottom:27px}
+.phase-number{font:700 14px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:#a1b2a3}
+.phase-tag{font-size:11px;color:#4a8562;background:#edf6ed;border-radius:40px;padding:4px 9px}
+.phase h3{font-size:clamp(19px,1.85vw,26px);line-height:1.25;letter-spacing:-.02em;margin:0 0 12px}
+.phase p{font-size:13px;line-height:1.7;color:#708376;margin:0}
+.phase-arrow{position:absolute;right:-15px;top:55%;font-size:21px;color:var(--tan);z-index:3;pointer-events:none}
+.phase:last-child .phase-arrow{display:none}
+.detail{display:grid;grid-template-columns:.48fr 1fr 1fr;gap:21px;margin-top:17px;padding:28px 30px;border-radius:19px;border:1px solid #cfe2d2;background:#edf4ed;align-items:start}
+.detail-heading span{display:block;font-size:11px;letter-spacing:.14em;color:#679576;font-weight:750;margin:0 0 11px}
+.detail-heading h3{font-size:27px;letter-spacing:-.02em;margin:0}
+.detail-col{padding-left:20px;border-left:1px solid #d0dfd0}
+.detail-col small{font-size:12px;font-weight:750;letter-spacing:.06em;color:#65836d}
+.detail-col p{margin:8px 0 0;font-size:15px;color:#345447;line-height:1.8}
+.detail-note{grid-column:1/-1;border-top:1px solid #cfe0d1;padding-top:13px;color:#548062;font-size:13px;line-height:1.7}
+.tool-section{margin-top:60px;padding:37px 40px 39px;border:1px solid #e2e7df;border-radius:27px;background:var(--paper);box-shadow:0 6px 24px rgba(35,57,42,.03)}
+.tool-section .section-head{margin:0 0 30px}
+.tool-lane{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr 36px 1fr;gap:13px;align-items:center}
+.lane-card{height:166px;border-radius:17px;border:1px solid #dce7dd;background:#fafdfa;padding:22px 20px;display:flex;flex-direction:column;gap:7px}
+.lane-card.doubao{background:#f7f1e9;border-color:#eadfce}
+.lane-card.feishu{background:#ecf3f5;border-color:#d9e5eb}
+.lane-card.pm{background:#e8f3e8;border-color:#c8dfcb}
+.lane-card .meta{color:#778d7a;font-size:11px;font-weight:700;letter-spacing:.08em}
+.lane-card b{font-size:23px;letter-spacing:-.02em}
+.lane-card small{font-size:13px;color:#738278;line-height:1.65}
+.lane-arrow{font-size:24px;color:#bca081;text-align:center}
+.boundary{display:flex;align-items:flex-start;gap:10px;margin-top:25px;background:#f5f8f4;padding:14px 18px;border-radius:11px;font-size:13px;line-height:1.75;color:#557162}
+.boundary strong{color:#305b43}
+.boundary .mark{color:#4a9264;font-size:17px}
+.demo{margin-top:57px;scroll-margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.demo-main{padding:14px 0}
+.demo h2{margin:12px 0 15px;font-size:36px;line-height:1.3}
+.demo .desc{margin:0 0 23px;font-size:17px;color:#65786b;line-height:1.85}
+.demo-steps{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.demo-steps li{display:flex;align-items:center;gap:13px;font-size:15px;color:#375646}
+.demo-steps .stepn{width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:#e2efe3;color:#397250;font-size:13px;font-weight:800;flex:0 0 auto}
+.prompt-card{background:var(--paper);border:1px solid #d9e4da;border-radius:23px;padding:23px;box-shadow:var(--shadow)}
+.prompt-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;gap:12px}
+.prompt-header strong{font-size:15px}
+.copy{border:1px solid #d6e4d9;border-radius:10px;background:#edf5ee;color:#315d43;padding:8px 12px;font-size:12px;font-weight:750}
+.copy:hover{background:#dfeee1}
+.prompt-text{white-space:pre-wrap;margin:0;color:#3a5244;font-size:14px;line-height:1.85;overflow-wrap:anywhere}
+.prompt-foot{margin-top:15px;border-top:1px solid #e8eee8;padding-top:13px;font-size:12px;color:#738476}
+.endline{display:flex;justify-content:space-between;align-items:center;gap:25px;margin-top:64px;padding-top:25px;border-top:1px solid #dee7db;color:#738376;font-size:12px}
+.endline a{font-size:13px;color:#39684a}
+@media(max-width:1240px){.wrap{width:min(1170px,calc(100% - 60px))}.timeline{grid-template-columns:repeat(3,minmax(0,1fr))}.phase{min-height:183px}.phase:nth-child(3) .phase-arrow{display:none}.phase-top{margin-bottom:18px}.tool-lane{grid-template-columns:1fr 22px 1fr 22px 1fr 22px 1fr;gap:7px}.lane-card{padding:16px 13px}.lane-card b{font-size:19px}.hero{gap:26px}}
+@media(max-width:860px){.wrap{width:calc(100% - 38px)}.hero{grid-template-columns:1fr;gap:27px;padding-top:42px}.hero-visual{min-height:220px}.tool-lane{grid-template-columns:repeat(2,1fr);gap:11px}.lane-arrow{display:none}.lane-card{height:143px}.detail{grid-template-columns:1fr 1fr}.detail-heading{grid-column:1/-1}.detail-col:nth-of-type(2){border-left:0;padding-left:0}.demo{grid-template-columns:1fr}.brand-text strong{font-size:13px}.top-right{gap:8px}}
+@media(max-width:600px){.top-inner{height:66px}.stage-pill{display:none}.brand-text span{display:none}.back-link{font-size:12px}.wrap{width:calc(100% - 30px)}.hero h1{font-size:37px}.intro{font-size:15px}.hero-visual{padding:17px;min-height:205px}.mini-flow{gap:5px;grid-template-columns:1fr 12px 1fr 12px 1fr}.mini-tile{min-height:83px;padding:7px 2px}.mini-tile b{font-size:14px}.mini-tile small{font-size:10px}.mini-arrow{font-size:13px}.section-head{display:block}.section-head p{margin-top:8px}.timeline{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.phase{min-height:174px;padding:17px 14px}.phase[aria-pressed="true"]{padding:16px 13px}.phase-top{margin-bottom:19px}.phase h3{font-size:23px}.phase p{font-size:12px}.phase:nth-child(3) .phase-arrow{display:block}.phase:nth-child(even) .phase-arrow{display:none}.detail{padding:21px;grid-template-columns:1fr;gap:16px}.detail-col{border-left:0;border-top:1px solid #d0dfd0;padding:14px 0 0}.detail-heading h3{font-size:25px}.tool-section{padding:23px 17px}.lane-card{height:135px}.lane-card b{font-size:19px}.demo h2{font-size:29px}.prompt-card{padding:18px}.endline{align-items:start;flex-direction:column;gap:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.phase{transition:none}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap top-inner">
+  <div class="brand"><span class="brand-icon">译</span><div class="brand-text"><strong>翻译项目管理与本地化系列工作坊（三）</strong><span>AI赋能翻译项目管理 · 实操部分</span></div></div>
+  <div class="top-right"><span class="stage-pill">PART 02 · AI 实操</span><a class="back-link" href="../">← 返回微信情境</a></div>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">FROM BRIEF TO WORKFLOW</div>
+      <h1>把客户发包，<br><em>变成可管理的项目。</em></h1>
+      <p class="intro">离开模拟微信群，进入项目经理的日常工作。借助豆包整理信息，利用飞书记录与跟进；每一个关键判断，仍由 PM 作出。</p>
+    </div>
+    <div class="hero-visual" aria-label="信息由微信群进入AI整理，并由PM核验后进入管理台账的示意">
+      <div class="hero-label"><span>这一次，我们换到项目管理视角</span><span class="mini">PM / AI / TMS</span></div>
+      <div class="mini-flow">
+        <div class="mini-tile"><b>微信群</b><small>客户发包</small></div>
+        <span class="mini-arrow">→</span>
+        <div class="mini-tile em"><b>豆包</b><small>信息整理</small></div>
+        <span class="mini-arrow">→</span>
+        <div class="mini-tile"><b>飞书</b><small>管理记录</small></div>
+      </div>
+      <div class="hero-foot"><span class="dot"></span> PM 核对每一步的结果，并负责安排与跟进</div>
+    </div>
+  </section>
+
+  <section class="flow-section" id="workflow">
+    <div class="section-head">
+      <div><div class="eyebrow">01 · PROJECT MANAGER</div><h2>PM 的六个工作节点</h2></div>
+      <p>点击卡片查看职责与工具分工</p>
+    </div>
+    <div class="timeline" aria-label="PM核心工作链">
+      <button class="phase" data-phase="0" aria-pressed="true"><span class="phase-top"><span class="phase-number">01</span><span class="phase-tag">豆包 + PM</span></span><h3>拆包</h3><p>识别文件、字数、<br>截止时间与异常</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="1" aria-pressed="false"><span class="phase-top"><span class="phase-number">02</span><span class="phase-tag">PM 决策</span></span><h3>分配</h3><p>匹配译员，<br>微信群发布任务</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="2" aria-pressed="false"><span class="phase-top"><span class="phase-number">03</span><span class="phase-tag">飞书跟踪</span></span><h3>催稿</h3><p>关注交稿节点，<br>协调延期与异常</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="3" aria-pressed="false"><span class="phase-top"><span class="phase-number">04</span><span class="phase-tag">PM 核查</span></span><h3>质控</h3><p>核验交付要求，<br>追踪问题整改</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="4" aria-pressed="false"><span class="phase-top"><span class="phase-number">05</span><span class="phase-tag">状态核验</span></span><h3>归档</h3><p>检查语料、术语<br>归档完成状态</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="5" aria-pressed="false"><span class="phase-top"><span class="phase-number">06</span><span class="phase-tag">30天周期</span></span><h3>结算</h3><p>统计译员工作量，<br>发起确认</p><span class="phase-arrow">→</span></button>
+    </div>
+    <div class="detail" id="phaseDetail" aria-live="polite">
+      <div class="detail-heading"><span>WORK NODE / 01</span><h3>拆包</h3></div>
+      <div class="detail-col"><small>PM 要做什么</small><p>核对客户发包的文件、字数、截止时间与交付方式；识别重复、遗漏和不明确的要求。</p></div>
+      <div class="detail-col"><small>AI / 飞书怎样辅助</small><p>豆包提取字段并标注疑点；经 PM 核验后，再将任务逐条登记飞书台账。</p></div>
+      <div class="detail-note">判断边界：客户的原始发包消息是事实依据；AI 提供整理建议，不能擅自修改客户数据。</div>
+    </div>
+  </section>
+
+  <section class="tool-section" id="tools">
+    <div class="section-head">
+      <div><div class="eyebrow">02 · COORDINATION</div><h2>两个工具，一条管理链</h2></div>
+      <p>工具协作，不等于无人审核的自动执行</p>
+    </div>
+    <div class="tool-lane">
+      <div class="lane-card"><span class="meta">COMMUNICATION</span><b>微信群</b><small>客户发布任务<br>译员接收、沟通与交稿</small></div>
+      <span class="lane-arrow">→</span>
+      <div class="lane-card doubao"><span class="meta">AI ASSISTANT</span><b>豆包</b><small>提取发包信息<br>形成分工建议、标记异常</small></div>
+      <span class="lane-arrow">→</span>
+      <div class="lane-card feishu"><span class="meta">PROJECT RECORD</span><b>飞书</b><small>任务台账、进度记录<br>归档核查与工作量统计</small></div>
+      <span class="lane-arrow">→</span>
+      <div class="lane-card pm"><span class="meta">HUMAN DECISION</span><b>PM</b><small>核对信息、审核建议<br>通过微信群安排与反馈</small></div>
+    </div>
+    <div class="boundary"><span class="mark">✓</span><div><strong>角色边界：</strong>译员继续通过微信群工作，不需要登录飞书。平行文本对齐、语料入库和术语整理由译员或相应执行人员完成；PM 负责核查是否完成、记录状态并跟进问题。飞书台账仅由 PM 及获授权的 AI 维护。</div></div>
+  </section>
+
+  <section class="demo" id="demo">
+    <div class="demo-main">
+      <div class="eyebrow">03 · LIVE DEMO / STEP 01</div>
+      <h2>从第一步“拆包”开始。</h2>
+      <p class="desc">把客户在微信群发送的任务消息，整理成一份可核查、可分配、可记录的项目任务清单。</p>
+      <ol class="demo-steps">
+        <li><span class="stepn">1</span>从微信群复制客户原始发包消息</li>
+        <li><span class="stepn">2</span>让豆包提取文件名、字数、截止时间等字段</li>
+        <li><span class="stepn">3</span>由 PM 检查重复项、遗漏与信息冲突</li>
+        <li><span class="stepn">4</span>将核验后的任务信息登记到飞书</li>
+      </ol>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-header"><strong>豆包 · 示例指令</strong><button class="copy" id="copyPrompt" type="button">复制指令</button></div>
+      <p class="prompt-text" id="promptText">你是翻译项目经理的工作助理。
+
+请严格根据我提供的客户发包消息，逐条提取以下信息：板块、文件名、字数、截止时间。
+
+保留原始文件名及原始数据，不要自行补全、修正或推测。若发现重复任务、信息冲突或缺失字段，请单独列出待核实事项。
+
+先输出任务清单和疑点，不要直接分配译员。
+
+【在此粘贴客户的发包消息】</p>
+      <div class="prompt-foot">先核对，后入账。示例仅用于演示提示词结构，不包含尚未提供的客户发包数据。</div>
+    </div>
+  </section>
+
+  <div class="endline"><span>翻译项目管理与本地化系列工作坊（三） · AI赋能翻译项目管理</span><a href="../">← 回到客户聊天情境</a></div>
+</main>
+<script>
+(function(){
+  const phases = [
+    {title:'拆包',work:'核对客户发包的文件、字数、截止时间与交付方式；识别重复、遗漏和不明确的要求。',tools:'豆包提取字段并标注疑点；经 PM 核验后，再将任务逐条登记飞书台账。',note:'判断边界：客户的原始发包消息是事实依据；AI 提供整理建议，不能擅自修改客户数据。'},
+    {title:'分配',work:'结合译员专业方向、可用时间与任务量制定分工；确定负责人，并在微信群发布任务安排。',tools:'豆包可以提出分配方案，飞书记录任务负责人和截止时间；最终分工由 PM 决定。',note:'沟通边界：译员只通过微信群接收任务，不需要使用飞书。'},
+    {title:'催稿',work:'持续关注各项任务的交付时间与完成状态；遇到延期或问题时，在微信群跟进与协调。',tools:'飞书记录任务节点和交稿状态；可按实际配置设置提醒，PM 判断何时催稿及如何调整。',note:'操作边界：提醒功能需要事先配置；当前教学页面不会自动向译员发送消息。'},
+    {title:'质控',work:'确认译员已按“三审三校”要求完成翻译；核查文件是否齐全、命名与格式是否符合客户要求，并跟进问题。',tools:'豆包可辅助生成检查要点和识别异常；飞书登记核查结果、返修与交稿状态。',note:'职责边界：语言质量由译员按既定审校流程负责；PM 负责管理层面的核查与协调。'},
+    {title:'归档',work:'跟进客户语料库与术语平台的归档状态；检查执行人员是否完成相应操作，对未完成事项进行提醒与记录。',tools:'飞书记录语料归档和术语更新的完成状态，方便 PM 查漏与追踪。',note:'关键区别：平行文本对齐、语料入库及术语录入不由 PM 亲自完成；PM 核验归档结果。'},
+    {title:'结算',work:'每30天按交稿期限节点统计各译员工作量，汇总交付记录，并请相关译员确认。',tools:'飞书可按负责人、交稿时间和字数汇总工作量，PM 核对并发起确认。',note:'责任边界：统计数据是结算依据，未经核对与译员确认，不应直接视为最终结算结果。'}
+  ];
+  const buttons=Array.from(document.querySelectorAll('.phase'));
+  const panel=document.getElementById('phaseDetail');
+  function showPhase(index){
+    const item=phases[index];
+    if(!item)return;
+    buttons.forEach((btn,i)=>btn.setAttribute('aria-pressed',String(i===index)));
+    panel.querySelector('.detail-heading span').textContent='WORK NODE / '+String(index+1).padStart(2,'0');
+    panel.querySelector('.detail-heading h3').textContent=item.title;
+    const ps=panel.querySelectorAll('.detail-col p');
+    ps[0].textContent=item.work;
+    ps[1].textContent=item.tools;
+    panel.querySelector('.detail-note').textContent=item.note;
+  }
+  buttons.forEach((btn,i)=>btn.addEventListener('click',()=>showPhase(i)));
+  const copy=document.getElementById('copyPrompt');
+  copy.addEventListener('click',async()=>{
+    const value=document.getElementById('promptText').innerText;
+    try{
+      await navigator.clipboard.writeText(value);
+      copy.textContent='已复制';
+    }catch(e){
+      const tmp=document.createElement('textarea');
+      tmp.value=value;document.body.appendChild(tmp);tmp.select();
+      const ok=document.execCommand('copy');tmp.remove();
+      copy.textContent=ok?'已复制':'请手动复制';
+    }
+    setTimeout(()=>{copy.textContent='复制指令'},1800);
+  });
+})();
+</script>
+</body>
+</html>
