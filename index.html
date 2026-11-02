@@ -316,6 +316,16 @@
       margin: 0 35px 20px 0; font-size: 24px; line-height: 1.35; color: #204e35;
     }
     .pm-intake-note p { margin: 0 0 13px; font-size: 16px; line-height: 1.65; }
+    .pm-intake-note__section { padding-top: 14px; margin-top: 14px; border-top: 1px solid #e4eae5; }
+    .pm-intake-note__section:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+    .pm-intake-note__section h3 {
+      margin: 0 0 9px; color: #245b40; font-size: 17px; font-weight: 650; line-height: 1.5;
+    }
+    .pm-intake-note__section p:last-child { margin-bottom: 0; }
+    .pm-intake-note__filename {
+      display: inline-block; padding: 8px 12px; border-radius: 8px;
+      background: #f2f6f1; color: #205a3b; font-size: 15px; font-weight: 650;
+    }
     .pm-intake-note__example {
       padding: 14px 17px; margin: 15px 0 17px;
       background: #f5f7f4; border: 1px solid #e4e9e4;
@@ -496,16 +506,28 @@
     <aside class="pm-intake-note" id="pmIntakeNote" role="dialog" aria-modal="false" aria-labelledby="pmIntakeTitle" hidden>
       <button class="pm-intake-note__close" id="pmIntakeClose" type="button" aria-label="关闭客户要求提示">×</button>
       <p class="pm-intake-note__eyebrow">客户要求 · V1 原文摘录</p>
-      <h2 id="pmIntakeTitle">①翻译工作发布</h2>
-      <p>翻译工作在微信群发布，示例如下：</p>
-      <div class="pm-intake-note__example">
-        <strong>【翻译发布】</strong>
-        <pre>1 文件1      字数
+      <h2 id="pmIntakeTitle">接单与需求分析</h2>
+      <section class="pm-intake-note__section">
+        <h3>①翻译工作发布</h3>
+        <p>翻译工作在微信群发布，示例如下：</p>
+        <div class="pm-intake-note__example">
+          <strong>【翻译发布】</strong>
+          <pre>1 文件1      字数
 2 文件2 字数
 3 文件3 字数</pre>
-      </div>
-      <p><strong>交付时间：</strong>2026年10月X日18:00前</p>
-      <div class="pm-intake-note__source">来源：客户《翻译工作流程（简版）》V1</div>
+        </div>
+        <p>交付时间：2026年10月X日18:00前</p>
+      </section>
+      <section class="pm-intake-note__section">
+        <h3>②翻译工作分配</h3>
+        <p>由项目经理（PM）负责分配译员，并在群中发布。</p>
+      </section>
+      <section class="pm-intake-note__section">
+        <h3>④翻译工作交付</h3>
+        <p>按照交付时间，在微信群中返回中法对照译文，命名示例如下：</p>
+        <p class="pm-intake-note__filename">1019-中法对照-文件名</p>
+      </section>
+      <div class="pm-intake-note__source">来源：客户《翻译工作流程（简版）》V1（第①、②、④项）</div>
     </aside>
   </div>
   <script>
