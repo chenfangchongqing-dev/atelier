@@ -354,9 +354,11 @@
       margin: 0; font-size: 17px; line-height: 1.65;
       color: #1e5037; font-weight: 650;
     }
-    .pm-intake-note__takeaway-body strong {
-      font-weight: 800; text-decoration: underline;
-      text-decoration-color: rgba(50,139,94,.45); text-underline-offset: 4px;
+    .pm-intake-note__takeaway-body .hl {
+      display: inline; padding: 0 .12em;
+      font-weight: 800; color: #184a33;
+      background: linear-gradient(transparent 58%, rgba(255, 230, 120, .78) 58%);
+      border-radius: 4px;
     }
     @media (max-width: 880px) {
       .pm-intake-note {
@@ -549,7 +551,7 @@
       <div class="pm-intake-note__source">来源：客户《翻译工作流程（简版）》V1（第①、②、④项）</div>
       <div class="pm-intake-note__takeaway" role="note" aria-label="PM职责课堂提示">
         <p class="pm-intake-note__takeaway-label">课堂提示 · PM职责</p>
-        <p class="pm-intake-note__takeaway-body">PM不一定亲自完成译稿交付，但必须在接单时确认<strong>交付渠道、文件格式、命名规范和截止时间</strong>，并负责后续跟进。</p>
+        <p class="pm-intake-note__takeaway-body">PM不一定亲自完成译稿交付，但必须在接单时确认<span class="hl">交付渠道、文件格式、命名规范和截止时间</span>，并负责后续跟进。</p>
       </div>
     </aside>
   </div>
