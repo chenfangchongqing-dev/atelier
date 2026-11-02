@@ -167,13 +167,23 @@
     .composer-toolbar { display: flex; gap: 21px; align-items: center; }
     .toolbar-icon { height: 21px; width: 21px; color: #7b7b7b; }
     .composer-blank { height: 64px; }
+    /* Teaching intervention: distinguish the classroom prompt from WeChat messages. */
     .pm-question {
-      display: block; width: 100%; height: 64px; text-align: left;
-      padding: 16px 0 0; border: 0; background: transparent;
-      color: #8e9290; font-family: inherit; font-size: 14px;
-      cursor: pointer; line-height: 1.5;
+      display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+      width: min(720px, 100%); height: 64px; text-align: left;
+      margin: 0; padding: 8px 17px 8px 15px;
+      border: 1px solid #cfe4d5; border-left: 4px solid #37a56e;
+      border-radius: 8px; background: #edf7f0;
+      color: #24563b; font-family: inherit; font-size: 21px; font-weight: 650;
+      cursor: pointer; line-height: 1.3;
+      transition: background .15s ease, border-color .15s ease;
     }
-    .pm-question:hover { color: #555; }
+    .pm-question::before {
+      content: "课堂提问"; display: block; margin-bottom: 3px;
+      color: #4d8c66; font-size: 11px; font-weight: 650; letter-spacing: .05em;
+    }
+    .pm-question:hover { color: #1e4d33; background: #e3f2e8; border-color: #9bceb0; border-left-color: #28995b; }
+    .pm-question:disabled { cursor: default; opacity: .78; }
     .pm-question:focus-visible, .mobile-question:focus-visible {
       outline: 2px solid #07c160; outline-offset: 2px; border-radius: 5px;
     }
@@ -211,8 +221,9 @@
       .mobile-circle { width: 31px; height: 31px; color: #626262; flex-shrink: 0; }
       .mobile-input { height: 38px; background: #fff; border-radius: 6px; flex: 1; border: 1px solid #eee; }
       .mobile-question {
-        display: block; min-width: 0; font-family: inherit; color: #777;
-        font-size: 12.5px; font-weight: 400; padding: 0 11px; text-align: left;
+        display: block; min-width: 0; font-family: inherit; color: #24563b;
+        background: #edf7f0; border: 1px solid #bbdcc5;
+        font-size: 15px; font-weight: 650; padding: 0 11px; text-align: left;
         white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         cursor: pointer;
       }
