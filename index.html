@@ -241,6 +241,44 @@
       .message-list { overflow: visible; }
       .message-wrapper { max-width: 100%; }
     }
+
+    /* Only revealed after the customer has clarified the terminology requirement. */
+    .pm-question[data-phase="customer"]::before { content: "情境继续"; }
+    .pm-question[data-phase="map"]::before { content: "岗位复盘"; }
+    .map-modal {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(12px, 3vw, 40px);
+      background: rgba(16, 30, 26, .82); backdrop-filter: blur(4px);
+    }
+    .map-modal[hidden] { display: none !important; }
+    .map-modal__panel {
+      position: relative; width: min(96vw, 2000px);
+      max-height: 92dvh; overflow: auto;
+      background: #fbfaf6; border-radius: 14px;
+      padding: clamp(13px, 1.7vw, 28px);
+      box-shadow: 0 22px 90px rgba(0, 0, 0, .25);
+      scrollbar-color: #a3b7aa #f8f8f8;
+    }
+    .map-modal__image { display: block; width: 100%; height: auto; }
+    .map-modal__close {
+      position: sticky; display: flex; align-items: center; gap: 6px;
+      top: 0; margin: 0 0 10px auto; z-index: 2;
+      border: 1px solid #d7e2d9; border-radius: 30px;
+      padding: 8px 15px; background: rgba(255,255,255,.96);
+      color: #214c39; font-family: inherit; font-size: 14px; font-weight: 600;
+      cursor: pointer;
+    }
+    .map-modal__close:hover { background: #e7f3e9; }
+    .map-modal__close:focus-visible { outline: 2px solid #07c160; outline-offset: 2px; }
+    body.map-is-open { overflow: hidden; }
+    @media (max-width: 780px) {
+      .map-modal { padding: 8px; }
+      .map-modal__panel { width: 100%; padding: 10px; max-height: 95dvh; }
+      .map-modal__image { width: 1000px; max-width: none; }
+      .map-modal__close { font-size: 13px; }
+    }
+    @media print { .map-modal { display: none !important; } }
   </style>
 </head>
 <body>
@@ -365,34 +403,68 @@
     </main>
   </div>
 </div>
+
+  <div class="map-modal" id="pmMapModal" role="dialog" aria-modal="true" aria-label="本场景的PM核心职责" hidden>
+    <div class="map-modal__panel">
+      <button class="map-modal__close" id="closePmMap" type="button" aria-label="关闭职责图并返回聊天">✕　返回聊天</button>
+      <img class="map-modal__image" src="assets/pm_responsibilities.webp" alt="本场景的PM核心职责：接单与需求分析、排期和发包、跟进与协调、交付时间记录与跟进、客户术语平台跟进，以及语言资产维护均已勾选；其他框内为译员需完成的技术与语言工作。">
+    </div>
+  </div>
   <script>
-    // Reveal successive chat messages while the instructor controls the pacing.
+    // Release classroom content in order: PM reply, customer clarification, then responsibility map.
     const reply = document.getElementById('pmReply01');
     const customerReply = document.getElementById('customerReply02');
     const conversation = document.querySelector('.message-list');
     const prompts = document.querySelectorAll('[data-reveal-pm]');
+    const mapModal = document.getElementById('pmMapModal');
+    const closeMapButton = document.getElementById('closePmMap');
     let stage = 0;
+    let lastFocus = null;
+
+    function updatePrompt(message, phase, controlledId) {
+      prompts.forEach(item => {
+        item.textContent = message;
+        item.dataset.phase = phase;
+        item.setAttribute('aria-controls', controlledId);
+        item.setAttribute('aria-expanded', 'false');
+      });
+    }
+    function openPmMap() {
+      lastFocus = document.activeElement;
+      mapModal.hidden = false;
+      document.body.classList.add('map-is-open');
+      prompts.forEach(item => item.setAttribute('aria-expanded', 'true'));
+      closeMapButton.focus();
+    }
+    function closePmMap() {
+      mapModal.hidden = true;
+      document.body.classList.remove('map-is-open');
+      prompts.forEach(item => item.setAttribute('aria-expanded', 'false'));
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
     prompts.forEach(prompt => {
       prompt.addEventListener('click', () => {
         if (stage === 0) {
           reply.hidden = false;
-          prompts.forEach(item => {
-            item.textContent = '查看客户回复';
-            item.setAttribute('aria-controls', 'customerReply02');
-            item.setAttribute('aria-expanded', 'false');
-          });
+          updatePrompt('查看客户回复', 'customer', 'customerReply02');
           stage = 1;
+          conversation.scrollTop = conversation.scrollHeight;
         } else if (stage === 1) {
           customerReply.hidden = false;
-          prompts.forEach(item => {
-            item.textContent = '客户回复已显示';
-            item.setAttribute('aria-expanded', 'true');
-            item.disabled = true;
-          });
+          updatePrompt('查看 PM 工作节点', 'map', 'pmMapModal');
           stage = 2;
+          conversation.scrollTop = conversation.scrollHeight;
+        } else {
+          openPmMap();
         }
-        conversation.scrollTop = conversation.scrollHeight;
       });
+    });
+    closeMapButton.addEventListener('click', closePmMap);
+    mapModal.addEventListener('click', event => {
+      if (event.target === mapModal) closePmMap();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !mapModal.hidden) closePmMap();
     });
   </script>
 </body>
