@@ -339,6 +339,25 @@
       border-top: 1px solid #e5eae5; padding-top: 12px; margin-top: 18px;
       color: #718075; font-size: 12px; line-height: 1.5;
     }
+    /* Classroom synthesis: visually distinct from the client's verbatim V1 text. */
+    .pm-intake-note__takeaway {
+      margin-top: 19px; padding: 17px 19px 18px;
+      border-left: 4px solid #318b5e;
+      border-radius: 9px; background: #eaf5ed;
+      box-shadow: inset 0 0 0 1px rgba(49,139,94,.08);
+    }
+    .pm-intake-note .pm-intake-note__takeaway-label {
+      margin: 0 0 8px; font-size: 12px; line-height: 1.4;
+      color: #32724d; font-weight: 750; letter-spacing: .04em;
+    }
+    .pm-intake-note .pm-intake-note__takeaway-body {
+      margin: 0; font-size: 17px; line-height: 1.65;
+      color: #1e5037; font-weight: 650;
+    }
+    .pm-intake-note__takeaway-body strong {
+      font-weight: 800; text-decoration: underline;
+      text-decoration-color: rgba(50,139,94,.45); text-underline-offset: 4px;
+    }
     @media (max-width: 880px) {
       .pm-intake-note {
         left: 50%; right: auto; transform: translate(-50%, -50%);
@@ -528,6 +547,10 @@
         <p class="pm-intake-note__filename">1019-中法对照-文件名</p>
       </section>
       <div class="pm-intake-note__source">来源：客户《翻译工作流程（简版）》V1（第①、②、④项）</div>
+      <div class="pm-intake-note__takeaway" role="note" aria-label="PM职责课堂提示">
+        <p class="pm-intake-note__takeaway-label">课堂提示 · PM职责</p>
+        <p class="pm-intake-note__takeaway-body">PM不一定亲自完成译稿交付，但必须在接单时确认<strong>交付渠道、文件格式、命名规范和截止时间</strong>，并负责后续跟进。</p>
+      </div>
     </aside>
   </div>
   <script>
