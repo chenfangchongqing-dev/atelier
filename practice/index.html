@@ -46,6 +46,19 @@ main{padding-bottom:82px}
 .mini-tile b{font-size:17px}
 .mini-tile small{font-size:11px;color:#758a7c}
 .mini-tile.em{background:#dcebdc;border-color:#b9d8bf}
+.feishu-trigger{cursor:zoom-in;width:100%;font-family:inherit;color:inherit;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.feishu-trigger::after{content:"↗";position:absolute;top:6px;right:9px;color:#57916e;font-size:14px;line-height:1}
+.feishu-trigger:hover{background:#cee6d2;border-color:#7eb18b;transform:translateY(-2px)}
+.feishu-trigger:focus-visible{outline:3px solid #3f9f6e;outline-offset:3px}
+body.feishu-screen-open{overflow:hidden}
+.feishu-screen-modal{position:fixed;inset:0;z-index:5000;background:rgba(18,27,27,.95);display:flex;align-items:center;justify-content:center;padding:16px}
+.feishu-screen-modal[hidden]{display:none!important}
+.feishu-screen-modal__frame{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.feishu-screen-modal__image{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;background:#fff;border-radius:8px;box-shadow:0 22px 70px rgba(0,0,0,.25)}
+.feishu-screen-modal__close{position:fixed;top:clamp(12px,1.5vw,25px);right:clamp(12px,1.5vw,25px);z-index:5001;min-height:40px;padding:9px 15px;border:1px solid rgba(255,255,255,.35);border-radius:24px;background:rgba(24,31,31,.87);color:#fff;font-family:inherit;font-size:14px;font-weight:650;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.18)}
+.feishu-screen-modal__close:hover{background:#284d3b;border-color:#99c9a6}
+.feishu-screen-modal__close:focus-visible{outline:3px solid #b7ead0;outline-offset:3px}
+@media(max-width:600px){.feishu-screen-modal{padding:8px}.feishu-screen-modal__image{border-radius:4px}.feishu-screen-modal__close{top:10px;right:10px;font-size:12px;padding:8px 10px;min-height:35px}}
 .mini-arrow{font-size:20px;color:#c49d75;text-align:center}
 .hero-foot{display:flex;align-items:center;gap:11px;color:#24533a;font-size:clamp(19px,1.75vw,25px);line-height:1.5;border-top:1px solid #d7e7d7;padding-top:19px}.hero-foot strong{font-weight:750}
 .hero-foot .dot{width:10px;height:10px;flex:0 0 10px;border-radius:50%;background:#5d9b70}
@@ -150,9 +163,9 @@ main{padding-bottom:82px}
       <div class="mini-flow">
         <div class="mini-tile"><b>微信群</b><small>客户发包</small></div>
         <span class="mini-arrow">→</span>
-        <div class="mini-tile em"><b>豆包</b><small>信息整理</small></div>
+        <div class="mini-tile"><b>豆包</b><small>信息整理</small></div>
         <span class="mini-arrow">→</span>
-        <div class="mini-tile"><b>飞书</b><small>管理记录</small></div>
+        <button class="mini-tile em feishu-trigger" id="openFeishuScreenshot" type="button" aria-haspopup="dialog" aria-controls="feishuScreenshotModal" aria-label="飞书：全屏查看法语版飞书多维表格新建入口" title="点击查看法语版飞书界面"><b>飞书</b><small>管理记录</small></button>
       </div>
       <div class="hero-foot"><span class="dot"></span><strong>PM 核对每一步的结果，并负责安排与跟进</strong></div>
     </div>
@@ -204,6 +217,12 @@ main{padding-bottom:82px}
 
   <div class="endline"><span>翻译项目管理与本地化系列工作坊（三） · AI赋能翻译项目管理</span><a href="../">← 回到客户聊天情境</a></div>
 </main>
+<div class="feishu-screen-modal" id="feishuScreenshotModal" role="dialog" aria-modal="true" aria-label="飞书多维表格 · 法语界面全屏截图" hidden>
+  <button class="feishu-screen-modal__close" id="closeFeishuScreenshot" type="button" aria-label="关闭飞书截图，返回实操课件">✕　返回课件 <span aria-hidden="true">Esc</span></button>
+  <div class="feishu-screen-modal__frame">
+    <img class="feishu-screen-modal__image" src="assets/feishu-base-fr.webp" width="2048" height="1280" alt="用户提供的飞书 Docs 法语版首页截图：在 Nouveau 新建菜单里，Base 代表多维表格。">
+  </div>
+</div>
 <script>
 (function(){
   const phases = [
@@ -259,6 +278,27 @@ main{padding-bottom:82px}
       copy.textContent=ok?'已复制':'请手动复制';
     }
     setTimeout(()=>{copy.textContent='复制指令'},1800);
+  });
+  const feishuButton=document.getElementById('openFeishuScreenshot');
+  const feishuModal=document.getElementById('feishuScreenshotModal');
+  const feishuClose=document.getElementById('closeFeishuScreenshot');
+  function openFeishuModal(){
+    feishuModal.hidden=false;
+    document.body.classList.add('feishu-screen-open');
+    feishuClose.focus();
+  }
+  function closeFeishuModal(){
+    feishuModal.hidden=true;
+    document.body.classList.remove('feishu-screen-open');
+    feishuButton.focus();
+  }
+  feishuButton.addEventListener('click',openFeishuModal);
+  feishuClose.addEventListener('click',closeFeishuModal);
+  feishuModal.addEventListener('click',event=>{
+    if(event.target===feishuModal || event.target.classList.contains('feishu-screen-modal__frame'))closeFeishuModal();
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape' && !feishuModal.hidden)closeFeishuModal();
   });
 })();
 </script>
