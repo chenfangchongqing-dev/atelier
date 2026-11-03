@@ -16,7 +16,7 @@
     .artwork{width:100%;height:auto;display:block;object-fit:contain}
     .qr-link{position:absolute;left:64%;top:20.7%;width:28%;height:47.1%;border-radius:4px;z-index:2;cursor:pointer}
     .qr-link:focus-visible{outline:3px solid #2c7954;outline-offset:2px}
-    .action-row{width:min(100%,calc((100dvh - 115px) * 1672 / 941));display:flex;justify-content:flex-end;padding-right:4px}
+    .action-row{width:min(100%,calc((100dvh - 115px) * 1672 / 941));display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;padding-right:4px}
     .continue{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:37px;padding:7px 13px;border:1px solid rgba(37,74,53,.23);border-radius:999px;background:#edf2e9;box-shadow:none;font-size:14px;font-weight:650;line-height:1.25;color:#315741;text-decoration:none;white-space:nowrap;transition:background .16s,transform .16s}
     .continue:hover{background:#e2ebdf;transform:translateX(2px)}
     .continue:focus-visible{outline:3px solid #b9945d;outline-offset:3px}
@@ -44,6 +44,10 @@
     <div class="action-row">
       <a class="continue" href="../guide/" aria-label="签到完成，进入专业术语快闪游戏">
         进入词汇游戏
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+      </a>
+      <a class="continue" href="../lecture/#2" aria-label="直接进入翻译项目管理流程及各岗位职责互动页面">
+        直达流程与岗位
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
       </a>
     </div>
