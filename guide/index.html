@@ -116,7 +116,7 @@ function flash(){
   const word=document.createElement("span");
   word.className="word";
   if(/[\u3400-\u9fff]/.test(term))word.classList.add("cn");
-  if(term.length>=6)word.classList.add("long");
+  if(term.length>=5)word.classList.add("long");
   if(term.includes("-"))word.classList.add("hyphen");
   word.textContent=term;
   card.appendChild(word);
