@@ -56,7 +56,6 @@ main{padding-bottom:82px}
 .flow-section .section-head{margin:0 0 28px}
 .flow-section .section-head h2{font-size:clamp(29px,2.65vw,40px);line-height:1.3}
 .flow-section .section-head h2::after{content:"";display:block;width:58px;height:3px;border-radius:3px;background:#589675;margin-top:15px}
-.detail-section{margin-top:0}
 .detail[hidden]{display:none!important}
 .detail-close{display:inline-block;margin-top:18px;padding:7px 12px;border:1px solid #bcd9c2;border-radius:9px;background:#f7fbf5;color:#427153;font-size:12px;font-weight:700}
 .detail-close:hover{background:#e4f2e3}
@@ -133,6 +132,12 @@ main{padding-bottom:82px}
       <button class="phase" data-phase="4" aria-pressed="false" aria-controls="phaseDetail" aria-expanded="false"><span class="phase-top"><span class="phase-number">05</span><span class="phase-tag">状态核验</span></span><h3>归档</h3><p>检查语料、术语<br>归档完成状态</p><span class="phase-arrow">→</span></button>
       <button class="phase" data-phase="5" aria-pressed="false" aria-controls="phaseDetail" aria-expanded="false"><span class="phase-top"><span class="phase-number">06</span><span class="phase-tag">30天周期</span></span><h3>结算</h3><p>统计译员工作量，<br>发起确认</p><span class="phase-arrow">→</span></button>
     </div>
+    <div class="detail" id="phaseDetail" aria-live="polite" hidden>
+      <div class="detail-heading"><span>WORK NODE / 01</span><h3>拆包</h3><button class="detail-close" id="closePhaseDetail" type="button" aria-label="收起工作节点说明">收起说明 ↑</button></div>
+      <div class="detail-col"><small>PM 要做什么</small><p>核对客户发包的文件、字数、截止时间与交付方式；识别重复、遗漏和不明确的要求。</p></div>
+      <div class="detail-col"><small>AI / 飞书怎样辅助</small><p>豆包提取字段并标注疑点；经 PM 核验后，再将任务逐条登记飞书台账。</p></div>
+      <div class="detail-note">判断边界：客户的原始发包消息是事实依据；AI 提供整理建议，不能擅自修改客户数据。</div>
+    </div>
   </section>
 
   <section class="hero">
@@ -150,15 +155,6 @@ main{padding-bottom:82px}
         <div class="mini-tile"><b>飞书</b><small>管理记录</small></div>
       </div>
       <div class="hero-foot"><span class="dot"></span><strong>PM 核对每一步的结果，并负责安排与跟进</strong></div>
-    </div>
-  </section>
-
-  <section class="detail-section" aria-label="工作节点职责说明">
-    <div class="detail" id="phaseDetail" aria-live="polite" hidden>
-      <div class="detail-heading"><span>WORK NODE / 01</span><h3>拆包</h3><button class="detail-close" id="closePhaseDetail" type="button" aria-label="收起工作节点说明">收起说明 ↑</button></div>
-      <div class="detail-col"><small>PM 要做什么</small><p>核对客户发包的文件、字数、截止时间与交付方式；识别重复、遗漏和不明确的要求。</p></div>
-      <div class="detail-col"><small>AI / 飞书怎样辅助</small><p>豆包提取字段并标注疑点；经 PM 核验后，再将任务逐条登记飞书台账。</p></div>
-      <div class="detail-note">判断边界：客户的原始发包消息是事实依据；AI 提供整理建议，不能擅自修改客户数据。</div>
     </div>
   </section>
 
