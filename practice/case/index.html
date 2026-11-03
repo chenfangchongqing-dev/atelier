@@ -49,6 +49,11 @@ h1{font-size:clamp(32px,3.7vw,59px);line-height:1.16;letter-spacing:-.045em;marg
 .discussion .main-question{font-weight:700;color:#244834;font-size:20px;line-height:1.55;padding:14px 0 0;margin-bottom:12px}
 .topic-strip{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0 8px}.topic-strip span{font-size:12px;color:#6c866f;padding:6px 10px;border:1px solid #e3ebe3;background:#f8faf7;border-radius:100px}
 .discussion-foot{padding-top:18px;border-top:1px solid #e7ede7;color:#86978b;font-size:12px;line-height:1.7}
+.available{border:1px solid #e0e8df;background:#fff;border-radius:19px;padding:19px 21px}
+.available-label{color:#70907a;font-size:11px;font-weight:770;letter-spacing:.07em;margin-bottom:11px}
+.available p{font-size:12px;color:#7c8f82;line-height:1.7;margin:0 0 12px}
+.available-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.available-grid span{padding:10px 9px;background:#f6f9f5;color:#4e6e57;font-size:12px;text-align:center;font-weight:650;border-radius:9px;border:1px solid #e5ede5}
 .challenge{border:1px solid #dfe7df;background:#f9fbf8;border-radius:19px;padding:18px 21px}.challenge .challenge-button{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;border:0;width:100%;padding:6px 0;background:transparent;color:#305943;font-size:15px;font-weight:760}.challenge .challenge-button .plus{font-size:22px;color:#71a080;font-weight:400}.challenge-details{margin:10px 0 3px;border-top:1px solid #dce8dd;padding:14px 0 0;font-size:15px;line-height:1.85;color:#3d5e47}.challenge-details[hidden]{display:none!important}
 .next{border:1px solid #c9dfcd;background:#eaf4eb;border-radius:19px;padding:18px 21px}.next .small-title{font-weight:750;color:#3c704f;font-size:11px;margin-bottom:9px;letter-spacing:.06em}.next p{font-size:13px;color:#5b7d63;line-height:1.7;margin:0 0 13px}.next a{font-weight:760;color:#275d3f;font-size:14px;border-bottom:1px solid #90bb98;padding-bottom:3px}.next a:hover{color:#193d28}
 .footer{margin:40px 0 0;padding-top:21px;border-top:1px solid #dce6dc;display:flex;gap:20px;align-items:center;justify-content:space-between;color:#849388;font-size:12px}.footer a{color:#417052;font-size:13px;font-weight:650}
@@ -103,7 +108,7 @@ body.reader-open{overflow:hidden}
           <div class="chat-stack">
             <div class="sender">客户</div>
             <figure class="zip-photo" id="zipPhoto" aria-label="客户发来的原文ZIP压缩包截图">
-              <img src="assets/wechat-zip.webp" width="548" height="270" alt="微信电脑版文件卡片：1022-中文翻译材料（第二批）.zip，16.4M" onerror="this.parentElement.classList.add('is-fallback')">
+              <img src="assets/wechat-zip.webp" width="370" height="199" alt="微信电脑版文件卡片：1022-中文翻译材料（第二批）.zip，16.4M" onerror="this.parentElement.classList.add('is-fallback')">
               <div class="zip-fallback"><strong>1022-中文翻译材料<br>（第二批）.zip</strong><small>16.4M</small><em>微信电脑版 · 原文文件压缩包</em></div>
             </figure>
             <div class="bubble"><pre class="raw-message" id="rawMessage">【翻译发布】
@@ -187,6 +192,13 @@ body.reader-open{overflow:hidden}
         <p class="main-question">从收到ZIP文件包开始，你准备使用什么工具、采取哪些方法？</p>
         <div class="topic-strip" aria-label="讨论涉及的管理工作"><span>拆包与核对</span><span>译员分配</span><span>工作量记录</span><span>进度与交稿</span><span>平台录入及归档核查</span><span>催稿与提醒</span></div>
         <div class="discussion-foot">先讨论你们原本会怎样做。此时不需要给出36份文件的具体分配结果，也不预设新的表格结构。</div>
+      </div>
+      <div class="available">
+        <div class="available-label">已有的管理资源</div>
+        <p>教师已准备以下四张飞书表格。请思考它们能记录哪些信息，还有哪些实际工作需要其他办法处理。</p>
+        <div class="available-grid">
+          <span>客户发包批次</span><span>翻译任务清单</span><span>译员资源管理</span><span>工作量结算</span>
+        </div>
       </div>
       <div class="challenge">
         <button class="challenge-button" type="button" id="revealCondition" aria-controls="condition" aria-expanded="false">第二轮讨论 · 公布追加条件 <span class="plus" id="conditionIcon" aria-hidden="true">＋</span></button>
