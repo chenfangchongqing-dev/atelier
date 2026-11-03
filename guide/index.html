@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f5f0">
+<meta name="description" content="翻译项目管理工作坊课堂导入：从小组翻译作业出发，经历协作方式、译文分歧与责任归属，进入TPM知识讲解。">
+<title>课堂导入｜从一份小组作业谈起</title>
+<style>
+:root{
+  --paper:#f7f6f1; --white:#fffefa; --ink:#1e4337; --text:#2e4d40;
+  --muted:#73877b; --line:#d9e3da; --sage:#e8eee7; --gold:#b58a68;
+  --shadow:0 18px 60px rgba(32,65,49,.065)
+}
+*{box-sizing:border-box}
+html{height:100%;background:var(--paper)}
+body{margin:0;min-height:100%;height:100dvh;overflow:hidden;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible{outline:3px solid #b88d65;outline-offset:4px}
+.frame{height:100%;width:min(100% - 100px,1450px);margin:auto;display:flex;flex-direction:column;min-height:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:106px;border-bottom:1px solid var(--line);flex-shrink:0}
+.topbar-left{display:flex;align-items:center;gap:24px}
+.back-home{font-size:17px;color:var(--muted);white-space:nowrap;border-right:1px solid var(--line);padding-right:24px;transition:color .2s}
+.back-home:hover{color:var(--ink)}
+.brand{color:var(--ink);font-weight:750;font-size:18px;letter-spacing:.015em;white-space:nowrap}
+.brand small{font-weight:500;color:var(--muted);margin-left:12px;font-size:15px}
+.path{display:flex;align-items:center;gap:8px}
+.path-item{color:#9aaa9e;border:1px solid transparent;border-radius:999px;font-size:14px;font-weight:650;white-space:nowrap;padding:9px 15px;transition:all .2s}
+.path-item.active{color:var(--ink);background:#e8eee7;border-color:#cfddd0}
+.path-item.done{color:#6c8573}
+.deck{flex:1;min-height:0;position:relative}
+.screen{display:none;width:100%;height:100%;overflow-y:auto;overscroll-behavior:contain;padding:44px 8px 30px;align-items:center;justify-content:center;flex-direction:column}
+.screen.active{display:flex}
+.screen-inner{width:100%;max-width:1340px;margin:auto}
+.kicker{color:#a67c60;font-size:clamp(16px,1.2vw,20px);font-weight:780;letter-spacing:.18em;margin:0 0 23px}
+h1,h2,h3,p{margin:0}
+.big-title{font-size:clamp(45px,5vw,84px);font-weight:785;letter-spacing:-.028em;line-height:1.23}
+.subline{font-size:clamp(20px,1.9vw,30px);color:var(--text);line-height:1.6}
+.accent-line{height:5px;width:80px;background:var(--gold);border-radius:5px;margin:26px 0}
+.fact-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px;margin-top:43px}
+.fact{background:var(--white);border:1px solid #dce6dd;border-radius:20px;padding:26px 30px;min-height:145px;display:flex;flex-direction:column;justify-content:center;gap:9px}
+.fact .field{font-size:17px;font-weight:620;color:var(--muted)}
+.fact strong{font-size:clamp(25px,2.3vw,37px);font-weight:730;line-height:1.3}
+.question-block{margin-top:46px;padding-left:28px;border-left:6px solid var(--gold)}
+.question-block .question-label{display:block;font-size:18px;color:#9a775e;letter-spacing:.12em;font-weight:700;margin-bottom:12px}
+.question-block .question{font-size:clamp(34px,3.7vw,59px);font-weight:750;letter-spacing:-.02em;line-height:1.35}
+/* step 2 */
+.branch-heading{font-size:clamp(40px,4.4vw,72px);line-height:1.23;font-weight:780}
+.branch-intro{margin-top:15px;font-size:clamp(20px,1.75vw,29px);color:var(--muted)}
+.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:39px}
+.choice{appearance:none;display:flex;flex-direction:column;align-items:start;text-align:left;justify-content:center;gap:13px;min-height:152px;border:2px solid #d9e3da;background:var(--white);border-radius:20px;padding:24px 27px;transition:background .16s,border-color .16s,transform .16s;color:var(--ink)}
+.choice:hover{border-color:#7c9c83;transform:translateY(-2px)}
+.choice[aria-pressed="true"]{border-color:var(--ink);background:#e7eee6;box-shadow:inset 0 0 0 1px var(--ink)}
+.choice small{color:#8d997f;font-size:17px;font-weight:750;letter-spacing:.11em}
+.choice strong{font-size:clamp(24px,2.3vw,35px);font-weight:750;line-height:1.24}
+.followup{margin-top:25px;padding:30px 36px;min-height:172px;border-radius:20px;border:1px solid #d7e3d6;background:var(--sage);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.followup .mini-label{font-size:17px;color:#6f876e;font-weight:750;letter-spacing:.12em}
+.followup .followup-text{font-size:clamp(29px,3vw,47px);line-height:1.4;font-weight:745}
+.followup:not(.ready){background:transparent;border-style:dashed}
+.followup:not(.ready) .followup-text{font-size:clamp(23px,2vw,30px);color:#94a299;font-weight:500}
+/* step 3 */
+.term-layout{text-align:center}
+.term-layout .kicker{margin-bottom:25px}
+.term-title{font-size:clamp(36px,4vw,62px);font-weight:780;line-height:1.24}
+.french-term{display:block;margin:20px auto 8px;font:italic clamp(58px,6.1vw,106px) Georgia,"Times New Roman",serif;color:#264d40;line-height:1.2}
+.term-context{font-size:clamp(21px,1.8vw,29px);color:var(--muted)}
+.reveal-terms{font-size:20px;background:#e6eee7;color:var(--ink);border:1px solid #b9d2bd;border-radius:999px;padding:12px 24px;margin:20px auto 0;display:inline-flex;align-items:center;gap:10px;font-weight:730}
+.reveal-terms:hover{background:#dce9dc}
+.translation-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px;margin-top:18px;min-height:128px}
+.translation{border:1px solid #d6e3d8;background:var(--white);border-radius:18px;padding:19px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:var(--shadow)}
+.translation .translator{font-size:17px;color:var(--muted);letter-spacing:.08em}
+.translation b{font-size:clamp(29px,2.7vw,45px);font-weight:780}
+.translation-row[hidden]{display:none}
+.term-question{margin:17px 0 0;font-size:clamp(29px,3vw,48px);font-weight:740;line-height:1.35}
+/* step 4 */
+.final-block{text-align:center;margin:auto}
+.final-block .kicker{margin-bottom:33px}
+.final-title{font-size:clamp(41px,4.5vw,72px);font-weight:780;line-height:1.32;letter-spacing:-.02em;max-width:1180px;margin:auto}
+.final-sub{font-size:clamp(21px,2vw,32px);color:#7a8d7f;margin:25px auto 0}
+.workchain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;gap:17px;margin:40px auto 0;max-width:1190px}
+.workitem{border:1px solid #d8e4d9;background:var(--white);padding:20px 10px;border-radius:16px;font-size:clamp(23px,2.3vw,36px);font-weight:700}
+.workitem::before{display:block;color:#b18769;font-size:16px;letter-spacing:.1em;font-weight:750;margin-bottom:9px}
+.workitem:nth-child(1)::before{content:'01'}
+.workitem:nth-child(2)::before{content:'02'}
+.workitem:nth-child(3)::before{content:'03'}
+.workitem:nth-child(4)::before{content:'04'}
+.final-bottom{margin-top:33px;font-size:clamp(20px,1.7vw,27px);color:var(--muted)}
+.entry{display:inline-flex;align-items:center;justify-content:center;gap:13px;background:var(--ink);color:white;border-radius:15px;font-size:clamp(22px,2vw,31px);font-weight:735;padding:18px 29px;margin-top:37px;box-shadow:0 15px 35px rgba(32,65,49,.14);transition:background .2s}
+.entry:hover{background:#315b48}
+/* bottom projector controls */
+.bottom{border-top:1px solid var(--line);min-height:104px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.bottom-left{display:flex;align-items:center;gap:19px;font-size:14px;color:var(--muted)}
+.count{color:var(--ink);font-size:19px;font-weight:760;font-variant-numeric:tabular-nums}
+.controls{display:flex;gap:10px;align-items:center}
+.navbtn{border:1px solid #cfdcd0;background:#fffefa;color:var(--ink);font-size:19px;font-weight:700;border-radius:12px;padding:15px 21px;min-height:55px}
+.navbtn:hover:not(:disabled){background:#e8eee7}
+.navbtn:disabled{opacity:.3;cursor:not-allowed}
+.navbtn.primary{color:white;background:var(--ink);border-color:var(--ink);min-width:155px}
+.navbtn.primary:hover:not(:disabled){background:#315b48}
+@media(max-width:1050px){.frame{width:calc(100% - 56px)}.brand small{display:none}.path-item{padding:8px 10px}.fact{padding:20px}.choice{padding:18px}.topbar{min-height:87px}.bottom{min-height:83px}.screen{padding:30px 5px}}
+@media(max-width:700px){body{overflow:auto;height:auto;min-height:100dvh}.frame{min-height:100dvh;height:auto;width:calc(100% - 34px)}.topbar{min-height:70px}.topbar-left{gap:10px}.back-home{padding-right:10px;font-size:14px}.brand{font-size:13px}.path{display:none}.deck{min-height:calc(100dvh - 147px)}.screen{min-height:calc(100dvh - 147px);height:auto;padding:25px 2px;overflow:visible}.fact-row,.choices,.translation-row{grid-template-columns:1fr}.fact-row{gap:8px;margin-top:25px}.fact{min-height:72px;padding:12px 17px;gap:4px}.fact .field{font-size:13px}.fact strong{font-size:22px}.question-block{margin-top:28px;padding-left:16px}.choices{gap:9px;margin-top:20px}.choice{min-height:80px;padding:13px 18px;gap:4px}.choice small{font-size:12px}.choice strong{font-size:22px}.followup{padding:21px;min-height:125px;margin-top:12px}.translation-row{gap:9px;min-height:0}.translation{padding:12px;gap:0}.translation b{font-size:28px}.term-question{margin-top:20px}.workchain{grid-template-columns:repeat(2,1fr);gap:9px;margin-top:35px}.workitem{font-size:22px;padding:16px 7px}.entry{margin-top:25px}.bottom{min-height:77px}.bottom-left span:nth-child(2){display:none}.navbtn{padding:10px 12px;font-size:15px;min-height:45px}.navbtn.primary{min-width:100px}.count{font-size:16px}}
+@media(max-height:775px) and (min-width:701px){.topbar{min-height:75px}.bottom{min-height:70px}.screen{padding:24px 8px}.kicker{margin-bottom:13px}.fact-row{margin-top:23px}.fact{min-height:105px;padding:16px 21px}.question-block{margin-top:24px}.choices{margin-top:23px}.choice{min-height:112px;padding:15px 20px}.followup{margin-top:18px;padding:19px 28px;min-height:115px}.french-term{margin:16px auto 6px}.reveal-terms{margin-top:16px}.translation-row{min-height:110px;margin-top:17px}.translation{padding:15px}.term-question{margin-top:17px}.workchain{margin-top:25px}.entry{margin-top:24px}.final-sub{margin-top:16px}.final-bottom{margin-top:19px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="frame">
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="back-home" href="../" aria-label="返回活动签到">← 签到</a>
+      <div class="brand">翻译项目管理工作坊 <small>课堂导入</small></div>
+    </div>
+    <nav class="path" aria-label="教学路径">
+      <span class="path-item active" data-progress="0">01 情境</span>
+      <span class="path-item" data-progress="1">02 经验</span>
+      <span class="path-item" data-progress="2">03 分歧</span>
+      <span class="path-item" data-progress="3">04 管理</span>
+    </nav>
+  </header>
+  <main class="deck" aria-label="小组翻译任务课堂引导">
+    <section class="screen active" data-step="0" aria-label="第一步：布置情境">
+      <div class="screen-inner">
+        <p class="kicker">01 · UNE MISSION DE TRADUCTION</p>
+        <h1 class="big-title">一份小组翻译作业</h1>
+        <div class="accent-line"></div>
+        <p class="subline">假设文雅老师布置了一项小组协作翻译任务。</p>
+        <div class="fact-row" aria-label="任务要求">
+          <div class="fact"><span class="field">谁布置？</span><strong>文雅老师</strong></div>
+          <div class="fact"><span class="field">什么时候交？</span><strong>下次课前</strong></div>
+          <div class="fact"><span class="field">交什么？</span><strong>每组一份完整译稿</strong></div>
+        </div>
+        <div class="question-block">
+          <span class="question-label">想一想</span>
+          <p class="question">你们以前通常是怎么完成的？</p>
+        </div>
+      </div>
+    </section>
+    <section class="screen" data-step="1" aria-label="第二步：学生经验与教师追问" hidden>
+      <div class="screen-inner">
+        <p class="kicker">02 · VOS EXPÉRIENCES</p>
+        <h2 class="branch-heading">你们是怎样合作的？</h2>
+        <p class="branch-intro">先听同学分享，再点击最接近的情况。</p>
+        <div class="choices" role="group" aria-label="选择学生实际描述的合作方式">
+          <button type="button" class="choice" data-branch="a" aria-pressed="false"><small>情况 A</small><strong>分段翻译，最后合并</strong></button>
+          <button type="button" class="choice" data-branch="b" aria-pressed="false"><small>情况 B</small><strong>小组讨论，各自翻译</strong></button>
+          <button type="button" class="choice" data-branch="c" aria-pressed="false"><small>情况 C</small><strong>有人负责统稿</strong></button>
+        </div>
+        <div class="followup" id="followup" aria-live="polite">
+          <span class="mini-label">教师追问</span>
+          <p class="followup-text" id="followupText">选择一种合作方式，显示对应的追问。</p>
+        </div>
+      </div>
+    </section>
+    <section class="screen" data-step="2" aria-label="第三步：译文的表达分歧" hidden>
+      <div class="screen-inner term-layout">
+        <p class="kicker">03 · UNE MÊME EXPRESSION</p>
+        <h2 class="term-title">同一个概念，出现了不同译法</h2>
+        <span class="french-term" lang="fr">art populaire</span>
+        <p class="term-context">假设它在三个段落中指的是同一个概念。</p>
+        <button class="reveal-terms" id="revealTerms" type="button" aria-expanded="false" aria-controls="translationRow">呈现三份译文 <span aria-hidden="true">＋</span></button>
+        <div class="translation-row" id="translationRow" hidden>
+          <div class="translation"><span class="translator">译员 A</span><b>大众艺术</b></div>
+          <div class="translation"><span class="translator">译员 B</span><b>流行艺术</b></div>
+          <div class="translation"><span class="translator">译员 C</span><b>民间艺术</b></div>
+        </div>
+        <p class="term-question" id="termQuestion" hidden>就这样合并交稿吗？谁来判断？</p>
+      </div>
+    </section>
+    <section class="screen" data-step="3" aria-label="第四步：引出翻译项目管理" hidden>
+      <div class="screen-inner final-block">
+        <p class="kicker">04 · DE L'EXERCICE AU PROJET</p>
+        <h2 class="final-title">谁来负责，让大家的翻译成果<br>成为一份可以交付的译稿？</h2>
+        <p class="final-sub">不仅要会翻译，还需要有人组织协作。</p>
+        <div class="workchain" aria-label="翻译项目管理的基本工作">
+          <div class="workitem">任务分工</div>
+          <div class="workitem">过程协调</div>
+          <div class="workitem">组织审校</div>
+          <div class="workitem">按时交付</div>
+        </div>
+        <p class="final-bottom">从小组合作，到翻译项目管理（TPM）</p>
+      </div>
+    </section>
+  </main>
+  <footer class="bottom">
+    <div class="bottom-left"><span class="count" id="counter">01 / 04</span><span>← → 翻页　·　F 全屏放映</span></div>
+    <div class="controls">
+      <button class="navbtn" id="prev" type="button" disabled>← 上一步</button>
+      <button class="navbtn primary" id="next" type="button">下一步 →</button>
+    </div>
+  </footer>
+</div>
+<script>
+(()=>{
+  const pages=Array.from(document.querySelectorAll('.screen'));
+  const progress=Array.from(document.querySelectorAll('[data-progress]'));
+  const counter=document.querySelector('#counter');
+  const prev=document.querySelector('#prev');
+  const next=document.querySelector('#next');
+  let current=0;
+  const questions={
+    a:'三段译文合并以后，有没有人从头到尾统稿？',
+    b:'但这次每组只能交一份。最后采用哪一个译文？',
+    c:'如果组员的译法有分歧，谁来决定？依据是什么？'
+  };
+  function show(n,updateHash=true){
+    current=Math.max(0,Math.min(3,n));
+    pages.forEach((p,i)=>{p.hidden=i!==current;p.classList.toggle('active',i===current);p.setAttribute('aria-hidden',String(i!==current));});
+    progress.forEach((p,i)=>{p.classList.toggle('active',i===current);p.classList.toggle('done',i<current);});
+    counter.textContent=String(current+1).padStart(2,'0')+' / 04';
+    prev.disabled=current===0;
+    next.textContent=current===3?'进入 TPM 讲解 →':'下一步 →';
+    if(updateHash)history.replaceState(null,'','#'+(current+1));
+  }
+  prev.addEventListener('click',()=>show(current-1));
+  next.addEventListener('click',()=>current===3?location.assign('../lecture/'):show(current+1));
+  document.querySelectorAll('[data-branch]').forEach(button=>button.addEventListener('click',()=>{
+    document.querySelectorAll('[data-branch]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    document.querySelector('#followupText').textContent=questions[button.dataset.branch];
+    document.querySelector('#followup').classList.add('ready');
+  }));
+  const reveal=document.querySelector('#revealTerms');
+  const translations=document.querySelector('#translationRow');
+  const termQuestion=document.querySelector('#termQuestion');
+  reveal.addEventListener('click',()=>{
+    const open=translations.hidden;
+    translations.hidden=!open;termQuestion.hidden=!open;
+    reveal.setAttribute('aria-expanded',String(open));
+    reveal.innerHTML=open?'收起译文 <span aria-hidden="true">−</span>':'呈现三份译文 <span aria-hidden="true">＋</span>';
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.altKey||event.metaKey||event.ctrlKey)return;
+    if(event.key==='ArrowRight'||event.key==='PageDown'){
+      event.preventDefault();if(current<3)show(current+1);
+    }else if(event.key==='ArrowLeft'||event.key==='PageUp'){
+      event.preventDefault();if(current>0)show(current-1);
+    }else if(event.key.toLowerCase()==='f'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){
+      if(!document.fullscreenElement)document.documentElement.requestFullscreen?.().catch(()=>{});
+      else document.exitFullscreen?.().catch(()=>{});
+    }
+  });
+  const initial=Number.parseInt(location.hash.slice(1),10);
+  show(Number.isInteger(initial)?initial-1:0,false);
+  window.addEventListener('hashchange',()=>{
+    const n=Number.parseInt(location.hash.slice(1),10);
+    if(n>=1&&n<=4&&n-1!==current)show(n-1,false);
+  });
+})();
+</script>
+</body>
+</html>
