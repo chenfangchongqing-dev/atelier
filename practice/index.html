@@ -90,6 +90,13 @@ body.feishu-screen-open{overflow:hidden}
 .detail-col small{font-size:12px;font-weight:750;letter-spacing:.06em;color:#65836d}
 .detail-col p{margin:8px 0 0;font-size:15px;color:#345447;line-height:1.8}
 .detail-note{grid-column:1/-1;border-top:1px solid #cfe0d1;padding-top:13px;color:#548062;font-size:13px;line-height:1.7}
+.case-jump{margin:19px 0 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;border:1px solid #d0e2d2;border-radius:23px;background:linear-gradient(125deg,#eef6ed,#fff);padding:26px 31px;box-shadow:0 7px 25px rgba(39,80,45,.045)}
+.case-jump__flag{color:#659174;font-size:11px;font-weight:770;letter-spacing:.12em}
+.case-jump h2{margin:8px 0 7px;font-size:clamp(22px,2.1vw,30px);letter-spacing:-.025em}
+.case-jump p{margin:0;color:#698171;font-size:14px;line-height:1.7}
+.case-jump__link{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:12px;background:#2e694b;color:#fff;font-size:14px;font-weight:720;white-space:nowrap;transition:background .15s}
+.case-jump__link:hover{background:#205637}
+@media(max-width:860px){.case-jump{grid-template-columns:1fr;padding:23px 21px}.case-jump__link{justify-self:start}}
 .tool-section{margin-top:60px;padding:37px 40px 39px;border:1px solid #e2e7df;border-radius:27px;background:var(--paper);box-shadow:0 6px 24px rgba(35,57,42,.03)}
 .tool-section .section-head{margin:0 0 30px}
 .tool-lane{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr 36px 1fr;gap:13px;align-items:center}
@@ -171,6 +178,15 @@ body.feishu-screen-open{overflow:hidden}
     </div>
   </section>
 
+  <section class="case-jump" aria-label="进入真实接单与无AI管理讨论">
+    <div>
+      <div class="case-jump__flag">课堂情境 · 真实项目案例</div>
+      <h2>10月22日11:09，客户发来了36份翻译任务。</h2>
+      <p>先查看完整的微信群发包原文与ZIP文件卡片。不使用AI，你准备怎样组织这批任务？</p>
+    </div>
+    <a class="case-jump__link" href="case/">进入真实接单现场 →</a>
+  </section>
+
   <section class="tool-section" id="tools">
     <div class="section-head">
       <div><div class="eyebrow">02 · COORDINATION</div><h2>两个工具，一条管理链</h2></div>
@@ -211,7 +227,7 @@ body.feishu-screen-open{overflow:hidden}
 先输出任务清单和疑点，不要直接分配译员。
 
 【在此粘贴客户的发包消息】</p>
-      <div class="prompt-foot">先核对，后入账。示例仅用于演示提示词结构，不包含尚未提供的客户发包数据。</div>
+      <div class="prompt-foot">先核对，后入账。<a href="case/" style="color:#397250;text-decoration:underline;text-underline-offset:2px">返回真实接单现场，复制客户原始发包消息</a>，再用于AI辅助整理。</div>
     </div>
   </section>
 
