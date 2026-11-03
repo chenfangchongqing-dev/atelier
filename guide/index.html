@@ -18,14 +18,16 @@ a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #b9956c;o
 .brand-mark{display:grid;place-items:center;width:37px;height:37px;background:#264b39;border-radius:12px;color:white;font-weight:790}
 .back{font-size:15px;color:#718576;white-space:nowrap}
 .back:hover{color:#244f39}
-.content{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 0 19px}
-.overline{color:#ae8b69;font-size:13px;font-weight:790;letter-spacing:.24em;margin:5px 0 9px}
-h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spacing:-.04em;font-weight:800}
-.prompt{margin:0 0 8px;color:#859889;font-size:clamp(16px,1.4vw,21px)}
-.arena{position:relative;width:100%;height:min(66dvh,625px);min-height:300px;overflow:hidden;isolation:isolate;border-radius:20px}
+.content{flex:1;min-height:0;display:grid;grid-template-columns:minmax(250px,315px) minmax(0,1fr);gap:clamp(18px,2.8vw,48px);align-items:stretch;padding:18px 0 20px}
+.intro-panel{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;padding:0 0 22px 8px;position:relative;z-index:3}
+.intro-panel::before{content:"";height:4px;width:58px;border-radius:99px;background:#bd8b68;margin-bottom:27px}
+.overline{color:#ae8b69;font-size:13px;font-weight:790;letter-spacing:.18em;line-height:1.6;margin:0 0 12px}
+h1{font-size:clamp(41px,4.1vw,62px);margin:0 0 22px;line-height:1.24;letter-spacing:-.04em;font-weight:800}
+.prompt{max-width:300px;margin:0;color:#859889;font-size:clamp(17px,1.55vw,22px);line-height:1.6}
+.arena{position:relative;width:100%;height:100%;min-height:360px;overflow:hidden;isolation:isolate;border-radius:20px}
 .arena:before{content:"";position:absolute;inset:8% 12%;background:radial-gradient(ellipse at center,#eaf1e8aa 0%,transparent 69%);pointer-events:none}
 .arena:after{content:"";position:absolute;inset:0;border:1px dashed #b9cbb73b;border-radius:20px;pointer-events:none}
-.flashcard{position:absolute;z-index:2;left:var(--x);top:var(--y);width:clamp(180px,24vw,330px);height:clamp(102px,15.5vh,147px);display:flex;align-items:center;justify-content:center;gap:0;padding:13px 19px;text-align:center;border-radius:22px;border:1px solid #d5e3d6;background:#fffefa;box-shadow:0 16px 38px rgba(25,62,42,.12);color:#244d3b;opacity:0;pointer-events:none;animation:scatter var(--duration) cubic-bezier(.22,.75,.24,1) both;will-change:opacity,transform,filter}
+.flashcard{position:absolute;z-index:2;left:var(--x);top:var(--y);width:clamp(195px,25%,300px);height:clamp(102px,15.5vh,147px);display:flex;align-items:center;justify-content:center;gap:0;padding:13px 19px;text-align:center;border-radius:22px;border:1px solid #d5e3d6;background:#fffefa;box-shadow:0 16px 38px rgba(25,62,42,.12);color:#244d3b;opacity:0;pointer-events:none;animation:scatter var(--duration) cubic-bezier(.22,.75,.24,1) both;will-change:opacity,transform,filter}
 .flashcard:before{content:"";position:absolute;height:5px;left:19px;right:19px;top:0;border-radius:0 0 6px 6px;background:#8aa98a}
 .flashcard.sage{background:#e6f0e7;border-color:#cbdcca;color:#204a39}
 .flashcard.sage:before{background:#447656}
@@ -39,7 +41,7 @@ h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spaci
 .word.cn{font-size:clamp(41px,4vw,62px);letter-spacing:.015em}
 .word.long{font-size:clamp(31px,3vw,50px)}
 .word.hyphen{font-size:clamp(37px,3.5vw,58px)}
-.word.xlong{font-size:clamp(29px,2.35vw,38px)}
+.word.xlong{font-size:clamp(22px,2.2vw,34px)}
 @keyframes scatter{
   0%{opacity:0;filter:blur(8px);transform:translate(-50%,-50%) translate(var(--in-x),var(--in-y)) rotate(var(--rot)) scale(.66)}
   13%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) rotate(var(--settle)) scale(1)}
@@ -51,7 +53,7 @@ h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spaci
 .small{color:#8b9a8b;font-size:14px;letter-spacing:.09em}
 .next{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#27583d;color:#fff;padding:12px 26px;border-radius:100px;font-weight:760;font-size:18px;min-height:52px}
 .next:hover{background:#173f2c}
-@media(max-width:800px){.page{width:calc(100% - 26px)}.topbar{min-height:67px}.brand{font-size:12px;gap:6px}.brand-mark{width:31px;height:31px}.back{font-size:12px}.overline{font-size:11px}h1{font-size:38px}.prompt{font-size:15px}.content{padding:8px 0}.arena{height:61dvh;min-height:360px}.flashcard{width:43%;height:clamp(83px,10.5vh,110px);padding:9px 7px;border-radius:16px}.flashcard:before{left:13px;right:13px}.word{font-size:clamp(38px,10vw,65px)}.word.cn{font-size:clamp(28px,7vw,46px)}.word.long{font-size:clamp(22px,5.6vw,39px)}.word.hyphen{font-size:clamp(25px,6.5vw,41px)}.word.xlong{font-size:clamp(16px,4.3vw,24px)}.footer{min-height:72px}.small{font-size:11px}.next{font-size:14px;min-height:46px;padding:10px 15px}}
+@media(max-width:800px){.page{width:calc(100% - 26px)}.topbar{min-height:67px}.brand{font-size:12px;gap:6px}.brand-mark{width:31px;height:31px}.back{font-size:12px}.content{display:flex;flex-direction:column;gap:8px;padding:10px 0 12px}.intro-panel{justify-content:flex-start;padding:2px 4px 0}.intro-panel::before{width:36px;height:3px;margin-bottom:10px}.overline{font-size:11px;margin:0 0 4px}h1{font-size:clamp(29px,6.8vw,40px);margin:0 0 3px}h1 br{display:none}.prompt{font-size:15px;max-width:none;line-height:1.4}.arena{flex:1;height:55dvh;min-height:255px}.flashcard{width:43%;height:clamp(83px,10.5vh,110px);padding:9px 7px;border-radius:16px}.flashcard:before{left:13px;right:13px}.word{font-size:clamp(38px,10vw,65px)}.word.cn{font-size:clamp(28px,7vw,46px)}.word.long{font-size:clamp(22px,5.6vw,39px)}.word.hyphen{font-size:clamp(25px,6.5vw,41px)}.word.xlong{font-size:clamp(16px,4.3vw,24px)}.footer{min-height:72px}.small{font-size:11px}.next{font-size:14px;min-height:46px;padding:10px 15px}}
 @media(prefers-reduced-motion:reduce){.flashcard{animation-timing-function:ease-in-out}@keyframes scatter{0%{opacity:0;transform:translate(-50%,-50%) scale(.97);filter:none}14%,77%{opacity:1;transform:translate(-50%,-50%) scale(1);filter:none}100%{opacity:0;transform:translate(-50%,-50%) scale(.97);filter:none}}}
 </style>
 </head>
@@ -62,10 +64,12 @@ h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spaci
     <a class="back" href="../">← 活动签到</a>
   </header>
   <main class="content">
-    <p class="overline">TERMINOLOGY · FLASH GAME</p>
-    <h1>行业术语快闪</h1>
-    <p class="prompt">看到这些词，大家能认出几个？</p>
-    <div class="arena" id="arena" aria-label="行业术语卡从不同方向自动闪现并持续循环"></div>
+    <div class="intro-panel">
+      <p class="overline">TERMINOLOGY · FLASH GAME</p>
+      <h1>行业术语<br>快闪</h1>
+      <p class="prompt">看到这些词，大家能认出几个？</p>
+    </div>
+    <div class="arena" id="arena" aria-label="行业术语卡从四面八方飞入，部分卡片从正上方垂直落下，并持续自动循环"></div>
   </main>
   <footer class="footer">
     <span class="small">PART 01 · WARM-UP</span>
@@ -124,7 +128,10 @@ function flash(){
   card.appendChild(word);
   card.style.setProperty("--x",points[slot][0]+"%");
   card.style.setProperty("--y",points[slot][1]+"%");
-  let direction=(priorDirection+1+Math.floor(Math.random()*7))%8;
+  // Every fourth card drops vertically from the top; other cards keep the multi-direction effect.
+  const otherDirections=[0,2,3,4,5,6,7];
+  let direction=turn%4===0?1:otherDirections[Math.floor(Math.random()*otherDirections.length)];
+  if(direction===priorDirection)direction=otherDirections[(otherDirections.indexOf(direction)+1)%otherDirections.length];
   priorDirection=direction;
   const [dx,dy]=directions[direction];
   card.style.setProperty("--in-x",(dx*arena.clientWidth*.78)+"px");
