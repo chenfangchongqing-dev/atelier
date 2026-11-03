@@ -142,7 +142,7 @@ function setWorkflowStep(n){
  workflowSlide.classList.toggle('pm-focus',workflowStep===6);
  const labels=['先看流程','岗位 1 / 5','岗位 2 / 5','岗位 3 / 5','岗位 4 / 5','岗位 5 / 5','PM · 全过程'];
  workflowSlide.querySelector('#wfTicks').textContent=labels[workflowStep];
- workflowSlide.querySelector('#wfGuidance').textContent=workflowStep===0?'先看左侧五个工作环节':workflowStep<6?'对应岗位逐一出现 · 继续按 → 展示下一岗位':'PM 贯穿全程：从立项到交付，组织与协调各项工作';
+ workflowSlide.querySelector('#wfGuidance').textContent=workflowStep===0?'先看左侧五个工作环节':workflowStep<6?'':'PM 贯穿全程：从立项到交付，组织与协调各项工作';
 }
 function go(n){
  const former=current;
