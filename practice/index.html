@@ -32,7 +32,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #7ab38e;outline-offset:3p
 .back-link{color:#50665a;font-size:13px;white-space:nowrap}
 .back-link:hover{color:var(--green)}
 main{padding-bottom:82px}
-.hero{padding:55px 0 40px;display:grid;grid-template-columns:1.12fr .88fr;gap:5vw;align-items:center}
+.hero{padding:53px 0 32px;display:grid;grid-template-columns:minmax(320px,.88fr) minmax(0,1.6fr);gap:clamp(16px,2vw,30px);align-items:center}
 .eyebrow{color:#6a9077;font-weight:750;font-size:12px;letter-spacing:.20em}
 .hero h1{margin:17px 0 21px;font-size:clamp(38px,3.7vw,63px);line-height:1.25;letter-spacing:-.06em;max-width:800px;font-weight:760}
 .hero h1 em{font-style:normal;color:#397b58}
@@ -47,18 +47,25 @@ main{padding-bottom:82px}
 .mini-tile small{font-size:11px;color:#758a7c}
 .mini-tile.em{background:#dcebdc;border-color:#b9d8bf}
 .mini-arrow{font-size:20px;color:#c49d75;text-align:center}
-.hero-foot{display:flex;align-items:center;gap:9px;color:#24533a;font-size:clamp(17px,1.55vw,21px);line-height:1.5;border-top:1px solid #d7e7d7;padding-top:19px}.hero-foot strong{font-weight:750}
-.hero-foot .dot{width:7px;height:7px;border-radius:50%;background:#5d9b70}
+.hero-foot{display:flex;align-items:center;gap:11px;color:#24533a;font-size:clamp(19px,1.75vw,25px);line-height:1.5;border-top:1px solid #d7e7d7;padding-top:19px}.hero-foot strong{font-weight:750}
+.hero-foot .dot{width:10px;height:10px;flex:0 0 10px;border-radius:50%;background:#5d9b70}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:28px 0 23px}
 .section-head h2{font-size:clamp(26px,2.2vw,33px);margin:6px 0 0;letter-spacing:-.03em}
 .section-head p{font-size:13px;color:var(--muted);margin:0 0 4px}
-.flow-section{scroll-margin-top:20px}
+.flow-section{scroll-margin-top:20px;padding-top:37px}
+.flow-section .section-head{margin:0 0 28px}
+.flow-section .section-head h2{font-size:clamp(29px,2.65vw,40px);line-height:1.3}
+.flow-section .section-head h2::after{content:"";display:block;width:58px;height:3px;border-radius:3px;background:#589675;margin-top:15px}
+.detail-section{margin-top:0}
+.detail[hidden]{display:none!important}
+.detail-close{display:inline-block;margin-top:18px;padding:7px 12px;border:1px solid #bcd9c2;border-radius:9px;background:#f7fbf5;color:#427153;font-size:12px;font-weight:700}
+.detail-close:hover{background:#e4f2e3}
 .timeline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .phase{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-height:211px;padding:19px 17px 18px;border:1px solid #dce5dd;border-radius:19px;background:#fff;transition:transform .18s,border-color .18s,box-shadow .18s;box-shadow:0 7px 18px rgba(40,68,49,.025);color:var(--ink)}
 .phase:hover{transform:translateY(-3px);border-color:#90b9a0;box-shadow:var(--shadow)}
 .phase[aria-pressed="true"]{background:linear-gradient(145deg,#f0f8ef,#fff);border:2px solid #4c8a60;padding:18px 16px 17px;box-shadow:0 10px 30px rgba(62,117,81,.11)}
 .phase-top{width:100%;display:flex;align-items:center;justify-content:space-between;margin-bottom:27px}
-.phase-number{font:700 14px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:#a1b2a3}
+.phase-number{font:750 14px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:#527f61;background:#e8f2e8;border-radius:999px;padding:5px 11px}
 .phase-tag{font-size:11px;color:#4a8562;background:#edf6ed;border-radius:40px;padding:4px 9px}
 .phase h3{font-size:clamp(19px,1.85vw,26px);line-height:1.25;letter-spacing:-.02em;margin:0 0 12px}
 .phase p{font-size:13px;line-height:1.7;color:#708376;margin:0}
@@ -113,6 +120,21 @@ main{padding-bottom:82px}
   <div class="top-right"><span class="stage-pill">PART 02 · AI 实操</span><a class="back-link" href="../">← 返回微信情境</a></div>
 </div></header>
 <main class="wrap">
+  <section class="flow-section" id="workflow">
+    <div class="section-head">
+      <div><div class="eyebrow">01 · PROJECT MANAGER</div><h2>PM 的六个工作节点</h2></div>
+      <p>点击卡片查看职责与工具分工</p>
+    </div>
+    <div class="timeline" aria-label="PM核心工作链">
+      <button class="phase" data-phase="0" aria-pressed="false" aria-controls="phaseDetail" aria-expanded="false"><span class="phase-top"><span class="phase-number">01</span><span class="phase-tag">豆包 + PM</span></span><h3>拆包</h3><p>识别文件、字数、<br>截止时间与异常</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="1" aria-pressed="false" aria-controls="phaseDetail" aria-expanded="false"><span class="phase-top"><span class="phase-number">02</span><span class="phase-tag">PM 决策</span></span><h3>分配</h3><p>匹配译员，<br>微信群发布任务</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="2" aria-pressed="false" aria-controls="phaseDetail" aria-expanded="false"><span class="phase-top"><span class="phase-number">03</span><span class="phase-tag">飞书跟踪</span></span><h3>催稿</h3><p>关注交稿节点，<br>协调延期与异常</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="3" aria-pressed="false" aria-controls="phaseDetail" aria-expanded="false"><span class="phase-top"><span class="phase-number">04</span><span class="phase-tag">PM 核查</span></span><h3>质控</h3><p>核验交付要求，<br>追踪问题整改</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="4" aria-pressed="false" aria-controls="phaseDetail" aria-expanded="false"><span class="phase-top"><span class="phase-number">05</span><span class="phase-tag">状态核验</span></span><h3>归档</h3><p>检查语料、术语<br>归档完成状态</p><span class="phase-arrow">→</span></button>
+      <button class="phase" data-phase="5" aria-pressed="false" aria-controls="phaseDetail" aria-expanded="false"><span class="phase-top"><span class="phase-number">06</span><span class="phase-tag">30天周期</span></span><h3>结算</h3><p>统计译员工作量，<br>发起确认</p><span class="phase-arrow">→</span></button>
+    </div>
+  </section>
+
   <section class="hero">
     <div>
       <h1>走进<br><em>飞书多维表格</em></h1>
@@ -131,21 +153,9 @@ main{padding-bottom:82px}
     </div>
   </section>
 
-  <section class="flow-section" id="workflow">
-    <div class="section-head">
-      <div><div class="eyebrow">01 · PROJECT MANAGER</div><h2>PM 的六个工作节点</h2></div>
-      <p>点击卡片查看职责与工具分工</p>
-    </div>
-    <div class="timeline" aria-label="PM核心工作链">
-      <button class="phase" data-phase="0" aria-pressed="true"><span class="phase-top"><span class="phase-number">01</span><span class="phase-tag">豆包 + PM</span></span><h3>拆包</h3><p>识别文件、字数、<br>截止时间与异常</p><span class="phase-arrow">→</span></button>
-      <button class="phase" data-phase="1" aria-pressed="false"><span class="phase-top"><span class="phase-number">02</span><span class="phase-tag">PM 决策</span></span><h3>分配</h3><p>匹配译员，<br>微信群发布任务</p><span class="phase-arrow">→</span></button>
-      <button class="phase" data-phase="2" aria-pressed="false"><span class="phase-top"><span class="phase-number">03</span><span class="phase-tag">飞书跟踪</span></span><h3>催稿</h3><p>关注交稿节点，<br>协调延期与异常</p><span class="phase-arrow">→</span></button>
-      <button class="phase" data-phase="3" aria-pressed="false"><span class="phase-top"><span class="phase-number">04</span><span class="phase-tag">PM 核查</span></span><h3>质控</h3><p>核验交付要求，<br>追踪问题整改</p><span class="phase-arrow">→</span></button>
-      <button class="phase" data-phase="4" aria-pressed="false"><span class="phase-top"><span class="phase-number">05</span><span class="phase-tag">状态核验</span></span><h3>归档</h3><p>检查语料、术语<br>归档完成状态</p><span class="phase-arrow">→</span></button>
-      <button class="phase" data-phase="5" aria-pressed="false"><span class="phase-top"><span class="phase-number">06</span><span class="phase-tag">30天周期</span></span><h3>结算</h3><p>统计译员工作量，<br>发起确认</p><span class="phase-arrow">→</span></button>
-    </div>
-    <div class="detail" id="phaseDetail" aria-live="polite">
-      <div class="detail-heading"><span>WORK NODE / 01</span><h3>拆包</h3></div>
+  <section class="detail-section" aria-label="工作节点职责说明">
+    <div class="detail" id="phaseDetail" aria-live="polite" hidden>
+      <div class="detail-heading"><span>WORK NODE / 01</span><h3>拆包</h3><button class="detail-close" id="closePhaseDetail" type="button" aria-label="收起工作节点说明">收起说明 ↑</button></div>
       <div class="detail-col"><small>PM 要做什么</small><p>核对客户发包的文件、字数、截止时间与交付方式；识别重复、遗漏和不明确的要求。</p></div>
       <div class="detail-col"><small>AI / 飞书怎样辅助</small><p>豆包提取字段并标注疑点；经 PM 核验后，再将任务逐条登记飞书台账。</p></div>
       <div class="detail-note">判断边界：客户的原始发包消息是事实依据；AI 提供整理建议，不能擅自修改客户数据。</div>
@@ -210,18 +220,36 @@ main{padding-bottom:82px}
   ];
   const buttons=Array.from(document.querySelectorAll('.phase'));
   const panel=document.getElementById('phaseDetail');
+  const closeDetail=document.getElementById('closePhaseDetail');
+  let selectedPhase=null;
+  function hideDetail(){
+    panel.hidden=true;
+    selectedPhase=null;
+    buttons.forEach(btn=>{
+      btn.setAttribute('aria-pressed','false');
+      btn.setAttribute('aria-expanded','false');
+    });
+  }
   function showPhase(index){
     const item=phases[index];
     if(!item)return;
-    buttons.forEach((btn,i)=>btn.setAttribute('aria-pressed',String(i===index)));
+    if(selectedPhase===index && !panel.hidden){hideDetail();return;}
+    selectedPhase=index;
+    panel.hidden=false;
+    buttons.forEach((btn,i)=>{
+      btn.setAttribute('aria-pressed',String(i===index));
+      btn.setAttribute('aria-expanded',String(i===index));
+    });
     panel.querySelector('.detail-heading span').textContent='WORK NODE / '+String(index+1).padStart(2,'0');
     panel.querySelector('.detail-heading h3').textContent=item.title;
     const ps=panel.querySelectorAll('.detail-col p');
     ps[0].textContent=item.work;
     ps[1].textContent=item.tools;
     panel.querySelector('.detail-note').textContent=item.note;
+    panel.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
   }
   buttons.forEach((btn,i)=>btn.addEventListener('click',()=>showPhase(i)));
+  closeDetail.addEventListener('click',hideDetail);
   const copy=document.getElementById('copyPrompt');
   copy.addEventListener('click',async()=>{
     const value=document.getElementById('promptText').innerText;
