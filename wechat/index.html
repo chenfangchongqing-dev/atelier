@@ -96,6 +96,10 @@
     .conversation-name { font-size: 18px; font-weight: 610; line-height: 1.3; }
     .conversation-subtitle { margin-top: 5px; font-size: 12px; color: #a2a2a2; letter-spacing: .02em; }
     .head-icon { width: 24px; height: 24px; color: #777; }
+    .header-actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+    .workflow-back { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 7px 13px; border: 1px solid #cddccf; border-radius: 999px; background: #edf4ee; color: #34644b; font-size: 13px; font-weight: 650; text-decoration: none; white-space: nowrap; transition: background .15s; }
+    .workflow-back:hover { background: #deebdf; }
+    .workflow-back:focus-visible { outline: 3px solid #bb9867; outline-offset: 3px; }
     .message-list {
       flex: 1; min-height: 0; overflow-y: auto;
       padding: 19px 33px 28px;
@@ -224,7 +228,11 @@
       .conversation-subtitle { display: none; }
       .conversation-header .header-title { display: flex; align-items: center; gap: 12px; }
       .mobile-back { display: block; width: 19px; height: 19px; color: #262626; }
-      .head-icon { width: 23px; height: 23px; }
+      .head-icon { display: none; }
+      .header-actions { gap: 0; }
+      .workflow-back { padding: 6px 9px; min-height: 30px; font-size: 12px; }
+      .header-title { min-width: 0; }
+      .conversation-name { white-space: nowrap; }
       .message-list { padding: 18px 13px 28px 12px; }
       .message-row { gap: 9px; }
       .client-avatar { height: 38px; width: 38px; font-size: 18px; }
@@ -456,7 +464,10 @@
           <svg class="mobile-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 5-7 7 7 7"/></svg>
           <div><div class="conversation-name">翻译项目工作群</div><div class="conversation-subtitle">教学情境模拟 · 第 1 条客户消息</div></div>
         </div>
-        <div class="head-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></div>
+        <div class="header-actions">
+          <a class="workflow-back" href="../city-workflow/" aria-label="返回城市政务与文旅外宣网站翻译流程">← 返回网站翻译流程</a>
+          <div class="head-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></div>
+        </div>
       </header>
       <section class="message-list" aria-label="群聊消息记录">
         <article class="message-row" data-message-id="customer-01" aria-label="客户的第一条消息">
