@@ -56,7 +56,7 @@ h1,h2,h3,p{margin:0}
 .choice small{color:#8d997f;font-size:17px;font-weight:750;letter-spacing:.11em}
 .choice strong{font-size:clamp(24px,2.3vw,35px);font-weight:750;line-height:1.24}
 .followup{margin-top:25px;padding:30px 36px;min-height:172px;border-radius:20px;border:1px solid #d7e3d6;background:var(--sage);display:flex;flex-direction:column;justify-content:center;gap:12px}
-.followup .mini-label{font-size:17px;color:#6f876e;font-weight:750;letter-spacing:.12em}
+.followup[hidden]{display:none}
 .followup .followup-text{font-size:clamp(29px,3vw,47px);line-height:1.4;font-weight:745}
 .followup:not(.ready){background:transparent;border-style:dashed}
 .followup:not(.ready) .followup-text{font-size:clamp(23px,2vw,30px);color:#94a299;font-weight:500}
@@ -140,16 +140,14 @@ h1,h2,h3,p{margin:0}
     <section class="screen" data-step="1" aria-label="第二步：学生经验与教师追问" hidden>
       <div class="screen-inner">
         <p class="kicker">02 · VOS EXPÉRIENCES</p>
-        <h2 class="branch-heading">你们是怎样合作的？</h2>
-        <p class="branch-intro">先听同学分享，再点击最接近的情况。</p>
+        <h2 class="branch-heading">大家是怎样合作的？</h2>
         <div class="choices" role="group" aria-label="选择学生实际描述的合作方式">
           <button type="button" class="choice" data-branch="a" aria-pressed="false"><small>情况 A</small><strong>分段翻译，最后合并</strong></button>
           <button type="button" class="choice" data-branch="b" aria-pressed="false"><small>情况 B</small><strong>小组讨论，各自翻译</strong></button>
           <button type="button" class="choice" data-branch="c" aria-pressed="false"><small>情况 C</small><strong>有人负责统稿</strong></button>
         </div>
-        <div class="followup" id="followup" aria-live="polite">
-          <span class="mini-label">教师追问</span>
-          <p class="followup-text" id="followupText">选择一种合作方式，显示对应的追问。</p>
+        <div class="followup" id="followup" aria-live="polite" hidden>
+          <p class="followup-text" id="followupText"></p>
         </div>
       </div>
     </section>
@@ -218,6 +216,7 @@ h1,h2,h3,p{margin:0}
   document.querySelectorAll('[data-branch]').forEach(button=>button.addEventListener('click',()=>{
     document.querySelectorAll('[data-branch]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
     document.querySelector('#followupText').textContent=questions[button.dataset.branch];
+    document.querySelector('#followup').hidden=false;
     document.querySelector('#followup').classList.add('ready');
   }));
   const reveal=document.querySelector('#revealTerms');
