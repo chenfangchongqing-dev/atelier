@@ -4,51 +4,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7f6f1">
-<meta name="description" content="翻译项目管理与本地化系列工作坊（三）· 自动循环播放的专业术语快闪游戏。">
-<title>专业术语快闪｜翻译项目管理工作坊</title>
+<meta name="description" content="翻译项目管理与本地化系列工作坊（三）· 术语从八个方向连续飞入、闪现、消失的词汇游戏。">
+<title>行业术语快闪｜翻译项目管理工作坊</title>
 <style>
-:root{--paper:#f7f6f1;--ink:#1c4335;--muted:#758b7b;--line:#dae4d9}
+:root{--paper:#f7f6f1;--ink:#1e4436;--muted:#7c8f7f;--line:#dce5db}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}
-body{background:radial-gradient(ellipse 84% 80% at 50% 48%,#fffefa,#f7f6f1 78%);color:var(--ink);-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #b8916a;outline-offset:4px}
-.page{min-height:100dvh;width:min(100% - 80px,1450px);margin:auto;display:flex;flex-direction:column}
-.topbar{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);flex:none}
-.brand{display:flex;align-items:center;gap:14px;font-weight:750;font-size:17px}
-.brand-mark{display:grid;place-items:center;background:#244d39;color:white;width:38px;height:38px;border-radius:12px;font-weight:800}
-.back{color:#778b7c;font-size:15px;white-space:nowrap}.back:hover{color:var(--ink)}
-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0;padding:25px 0 32px;text-align:center}
-.eyebrow{font-size:15px;font-weight:800;letter-spacing:.21em;color:#b08a6a}
-h1{font-size:clamp(37px,4.35vw,66px);line-height:1.25;letter-spacing:-.045em;font-weight:780;margin:13px 0 10px}
-.intro{color:#829589;font-size:clamp(17px,1.55vw,23px);margin:0 0 32px}
-.deck{position:relative;width:min(920px,100%);height:clamp(285px,38vh,400px);margin-bottom:24px}
-.layer{position:absolute;border:1px solid #d4dfd2;border-radius:28px;background:#e5ece3;top:20px;bottom:-13px;left:6%;right:6%;opacity:.75}
-.layer.two{top:11px;bottom:-5px;left:3%;right:3%;background:#eef2e8}
-.card{position:absolute;inset:0;overflow:hidden;border-radius:28px;border:1px solid #cedccf;background:linear-gradient(135deg,#fffefa 10%,#f2f5ee 100%);box-shadow:0 24px 70px rgba(29,66,42,.09);isolation:isolate}
-.card::before{position:absolute;content:"";height:6px;left:0;right:0;top:0;background:linear-gradient(90deg,#244e3b,#7c9e80 65%,#c3a075)}
-.card.alt{background:linear-gradient(135deg,#edf4eb 0%,#e6eee4 100%)}
-.card.dark{background:linear-gradient(135deg,#285443 0%,#1c4437 100%);border-color:#26523f;color:#fff}
-.card.dark::before{background:linear-gradient(90deg,#bb9d76,#c9dcbc)}
-.corner{position:absolute;left:29px;top:27px;font-size:13px;font-weight:750;letter-spacing:.17em;color:#9bac9c}
-.card.dark .corner,.card.dark .counter{color:#bbd2bd}
-.counter{position:absolute;right:29px;top:27px;font-size:16px;font-weight:730;color:#7e9884;font-variant-numeric:tabular-nums}
-.slot{position:absolute;inset:0;overflow:hidden}
-.word{position:absolute;inset:0;display:grid;place-items:center;padding:40px 28px 20px;opacity:0;transform:translateY(85%) scale(.92);filter:blur(5px);transition:transform .48s cubic-bezier(.2,.84,.32,1),opacity .28s ease,filter .25s ease;will-change:transform,opacity}
-.word.visible{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
-.word.outgoing{opacity:0;transform:translateY(-87%) scale(.95);filter:blur(5px)}
-.word span{font-weight:800;font-size:clamp(95px,11vw,170px);letter-spacing:-.045em;line-height:1.12;overflow-wrap:anywhere}
-.word span.zh{font-size:clamp(64px,7vw,121px);letter-spacing:.015em}
-.word span.long{font-size:clamp(57px,6.25vw,106px)}
-.dots{height:7px;display:flex;gap:7px;justify-content:center;align-items:center;margin:14px 0 15px}
-.dots i{height:5px;width:24px;display:block;background:#dce7dc;border-radius:6px;transition:background .15s,transform .15s}
-.dots i.on{background:#4d8260;transform:scaleY(1.35)}
-.caption{font-size:16px;color:#94a398;letter-spacing:.035em}
-.footer{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:91px;border-top:1px solid var(--line)}
-.small{font-size:14px;color:#8a9b8e}
-.next{display:inline-flex;align-items:center;gap:14px;justify-content:center;border-radius:100px;background:#28573e;color:white;padding:14px 28px;font-size:19px;font-weight:780;min-height:54px;box-shadow:0 11px 25px rgba(25,69,41,.14);transition:background .17s}
-.next:hover{background:#183e2c}
-@media(max-width:700px){.page{width:calc(100% - 34px)}.topbar{min-height:73px}.brand{font-size:12px;gap:8px}.brand-mark{width:32px;height:32px}.back{font-size:12px}.eyebrow{font-size:12px}h1{margin:9px 0}.intro{font-size:16px;margin-bottom:23px}.deck{height:33vh;min-height:235px}.corner{left:19px;top:20px;font-size:11px}.counter{right:19px;top:20px;font-size:12px}.word span{font-size:clamp(68px,15vw,100px)}.word span.zh{font-size:clamp(49px,10vw,74px)}.word span.long{font-size:clamp(39px,8.3vw,60px)}.footer{min-height:90px;gap:12px}.small{font-size:12px}.next{font-size:15px;padding:12px 17px}.dots{gap:5px}.dots i{width:13px}}
-@media(prefers-reduced-motion:reduce){.word{transition:opacity .14s ease;transform:none!important;filter:none!important}.word.outgoing{transform:none}}
+body{background:radial-gradient(ellipse at 50% 48%,#fffefa 0%,var(--paper) 82%);color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #b9956c;outline-offset:3px}
+.page{min-height:100dvh;width:min(calc(100% - 76px),1480px);margin:auto;display:flex;flex-direction:column}
+.topbar{min-height:80px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;flex:none}
+.brand{font-size:16px;font-weight:730;display:flex;align-items:center;gap:12px}
+.brand-mark{display:grid;place-items:center;width:37px;height:37px;background:#264b39;border-radius:12px;color:white;font-weight:790}
+.back{font-size:15px;color:#718576;white-space:nowrap}
+.back:hover{color:#244f39}
+.content{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 0 19px}
+.overline{color:#ae8b69;font-size:13px;font-weight:790;letter-spacing:.24em;margin:5px 0 9px}
+h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spacing:-.04em;font-weight:800}
+.prompt{margin:0 0 8px;color:#859889;font-size:clamp(16px,1.4vw,21px)}
+.arena{position:relative;width:100%;height:min(66dvh,625px);min-height:300px;overflow:hidden;isolation:isolate;border-radius:20px}
+.arena:before{content:"";position:absolute;inset:8% 12%;background:radial-gradient(ellipse at center,#eaf1e8aa 0%,transparent 69%);pointer-events:none}
+.arena:after{content:"";position:absolute;inset:0;border:1px dashed #b9cbb73b;border-radius:20px;pointer-events:none}
+.flashcard{position:absolute;z-index:2;left:var(--x);top:var(--y);width:clamp(180px,24vw,330px);height:clamp(102px,15.5vh,147px);display:flex;align-items:center;justify-content:center;gap:0;padding:13px 19px;text-align:center;border-radius:22px;border:1px solid #d5e3d6;background:#fffefa;box-shadow:0 16px 38px rgba(25,62,42,.12);color:#244d3b;opacity:0;pointer-events:none;animation:scatter var(--duration) cubic-bezier(.22,.75,.24,1) both;will-change:opacity,transform,filter}
+.flashcard:before{content:"";position:absolute;height:5px;left:19px;right:19px;top:0;border-radius:0 0 6px 6px;background:#8aa98a}
+.flashcard.sage{background:#e6f0e7;border-color:#cbdcca;color:#204a39}
+.flashcard.sage:before{background:#447656}
+.flashcard.sand{background:#f6ecdd;border-color:#e8d8c3;color:#6f533e}
+.flashcard.sand:before{background:#b5926f}
+.flashcard.blue{background:#e6eff0;border-color:#cfdfe1;color:#264e53}
+.flashcard.blue:before{background:#80a9ad}
+.flashcard.forest{background:#244d3b;border-color:#204635;color:#fffef6;box-shadow:0 20px 47px rgba(17,52,35,.2)}
+.flashcard.forest:before{background:#bdab83}
+.word{font-size:clamp(60px,5.6vw,88px);font-weight:830;letter-spacing:-.045em;line-height:1.14;white-space:nowrap}
+.word.cn{font-size:clamp(41px,4vw,62px);letter-spacing:.015em}
+.word.long{font-size:clamp(31px,3vw,50px)}
+.word.hyphen{font-size:clamp(37px,3.5vw,58px)}
+@keyframes scatter{
+  0%{opacity:0;filter:blur(8px);transform:translate(-50%,-50%) translate(var(--in-x),var(--in-y)) rotate(var(--rot)) scale(.66)}
+  16%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) rotate(var(--settle)) scale(1.06)}
+  25%,63%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) rotate(var(--settle)) scale(1)}
+  84%{opacity:.7;filter:blur(0);transform:translate(-50%,-50%) translate(calc(var(--out-x) * .42),calc(var(--out-y) * .42)) rotate(var(--settle)) scale(.98)}
+  100%{opacity:0;filter:blur(5px);transform:translate(-50%,-50%) translate(var(--out-x),var(--out-y)) rotate(var(--rot)) scale(.8)}
+}
+.footer{min-height:77px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:18px}
+.small{color:#8b9a8b;font-size:14px;letter-spacing:.09em}
+.next{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#27583d;color:#fff;padding:12px 26px;border-radius:100px;font-weight:760;font-size:18px;min-height:52px}
+.next:hover{background:#173f2c}
+@media(max-width:800px){.page{width:calc(100% - 26px)}.topbar{min-height:67px}.brand{font-size:12px;gap:6px}.brand-mark{width:31px;height:31px}.back{font-size:12px}.overline{font-size:11px}h1{font-size:38px}.prompt{font-size:15px}.content{padding:8px 0}.arena{height:61dvh;min-height:360px}.flashcard{width:43%;height:clamp(83px,10.5vh,110px);padding:9px 7px;border-radius:16px}.flashcard:before{left:13px;right:13px}.word{font-size:clamp(38px,10vw,65px)}.word.cn{font-size:clamp(28px,7vw,46px)}.word.long{font-size:clamp(22px,5.6vw,39px)}.word.hyphen{font-size:clamp(25px,6.5vw,41px)}.footer{min-height:72px}.small{font-size:11px}.next{font-size:14px;min-height:46px;padding:10px 15px}}
+@media(prefers-reduced-motion:reduce){.flashcard{animation-timing-function:ease-in-out}@keyframes scatter{0%{opacity:0;transform:translate(-50%,-50%) scale(.97);filter:none}14%,77%{opacity:1;transform:translate(-50%,-50%) scale(1);filter:none}100%{opacity:0;transform:translate(-50%,-50%) scale(.97);filter:none}}}
 </style>
 </head>
 <body>
@@ -57,20 +60,11 @@ h1{font-size:clamp(37px,4.35vw,66px);line-height:1.25;letter-spacing:-.045em;fon
     <div class="brand"><span class="brand-mark">译</span><span>翻译项目管理与本地化系列工作坊（三）</span></div>
     <a class="back" href="../">← 活动签到</a>
   </header>
-  <main>
-    <p class="eyebrow">TERMINOLOGY · FLASH CARDS</p>
+  <main class="content">
+    <p class="overline">TERMINOLOGY · FLASH GAME</p>
     <h1>行业术语快闪</h1>
-    <p class="intro">看到这个词，你会想到什么？</p>
-    <div class="deck" aria-label="专业术语自动轮播">
-      <div class="layer"></div><div class="layer two"></div>
-      <div class="card" id="card">
-        <span class="corner">TRADUCTION & LOCALISATION</span>
-        <span class="counter" id="counter">01 / 16</span>
-        <div class="slot" id="slot" aria-live="off"></div>
-      </div>
-    </div>
-    <div class="dots" id="dots" aria-hidden="true"></div>
-    <p class="caption">自动循环 · 术语辨认</p>
+    <p class="prompt">看到这些词，大家能认出几个？</p>
+    <div class="arena" id="arena" aria-label="行业术语卡从不同方向自动闪现并持续循环"></div>
   </main>
   <footer class="footer">
     <span class="small">PART 01 · WARM-UP</span>
@@ -79,39 +73,75 @@ h1{font-size:clamp(37px,4.35vw,66px);line-height:1.25;letter-spacing:-.045em;fon
 </div>
 <script>
 (() => {
-  "use strict";
-  const terms=["LSP","本地化","QA","质量工程师","PM","TPM","TB","TM","MAO","CAT","TMS","语言资产","爆框","回填","伪翻译测试","In-Context"];
-  const slot=document.getElementById("slot");
-  const card=document.getElementById("card");
-  const counter=document.getElementById("counter");
-  const dots=document.getElementById("dots");
-  const hold=1780;
-  let index=0, shown=null, sequence=0;
-  for(let i=0;i<terms.length;i++){const d=document.createElement("i");dots.appendChild(d)}
-  function next(){
-    const current=sequence++;
-    const value=terms[index];
-    const idx=index;
-    index=(index+1)%terms.length;
-    const panel=document.createElement("div");
-    panel.className="word";
-    const span=document.createElement("span");
-    span.textContent=value;
-    if(/[\u3400-\u9fff]/.test(value))span.classList.add("zh");
-    if(value.length>=7)span.classList.add("long");
-    panel.appendChild(span);
-    slot.appendChild(panel);
-    const previous=shown;
-    shown=panel;
-    card.classList.toggle("alt",idx%3===1);
-    card.classList.toggle("dark",idx%3===2);
-    counter.textContent=String(idx+1).padStart(2,"0")+" / "+String(terms.length).padStart(2,"0");
-    for(let j=0;j<dots.children.length;j++)dots.children[j].classList.toggle("on",j===idx);
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{if(sequence===current+1)panel.classList.add("visible")}));
-    if(previous){previous.classList.remove("visible");previous.classList.add("outgoing");setTimeout(()=>previous.remove(),540)}
+"use strict";
+const TERMS=["LSP","本地化","QA","质量工程师","PM","TPM","TB","TM","MAO","CAT","TMS","语言资产","爆框","回填","伪翻译测试","In-Context"];
+const arena=document.getElementById("arena");
+const directions=[[-1,-1],[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0]];
+const palette=["forest","sage","sand","blue","paper","sage","paper","forest"];
+const interval=470;
+const lifetime=2380;
+let stack=[],cycle=0,turn=0;
+const occupied=new Set();
+let priorSlot=-1,priorDirection=-1;
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}
+  return arr;
+}
+function takeWord(){
+  if(!stack.length)stack=shuffle([...TERMS]);
+  return stack.pop();
+}
+function spots(){
+  if(matchMedia("(max-width: 800px)").matches){
+    return [[25,13],[75,13],[25,37],[75,37],[25,63],[75,63],[25,87],[75,87]];
   }
-  next();
-  setInterval(next,hold);
+  return [[17,19],[50,19],[83,19],[17,50],[50,50],[83,50],[17,81],[50,81],[83,81]];
+}
+function chooseSpot(points){
+  let options=points.map((p,i)=>i).filter(i=>!occupied.has(i)&&i!==priorSlot);
+  if(!options.length)options=points.map((p,i)=>i).filter(i=>!occupied.has(i));
+  if(!options.length)return -1;
+  return options[Math.floor(Math.random()*options.length)];
+}
+function flash(){
+  const points=spots();
+  const slot=chooseSpot(points);
+  if(slot===-1)return;
+  const term=takeWord();
+  occupied.add(slot);priorSlot=slot;
+  turn++;
+  const card=document.createElement("div");
+  const color=palette[(turn+Math.floor(Math.random()*palette.length))%palette.length];
+  card.className="flashcard "+color;
+  const word=document.createElement("span");
+  word.className="word";
+  if(/[\u3400-\u9fff]/.test(term))word.classList.add("cn");
+  if(term.length>=6)word.classList.add("long");
+  if(term.includes("-"))word.classList.add("hyphen");
+  word.textContent=term;
+  card.appendChild(word);
+  card.style.setProperty("--x",points[slot][0]+"%");
+  card.style.setProperty("--y",points[slot][1]+"%");
+  let direction=(priorDirection+1+Math.floor(Math.random()*7))%8;
+  priorDirection=direction;
+  const [dx,dy]=directions[direction];
+  card.style.setProperty("--in-x",(dx*arena.clientWidth*.78)+"px");
+  card.style.setProperty("--in-y",(dy*arena.clientHeight*.82)+"px");
+  card.style.setProperty("--out-x",(-dx*arena.clientWidth*.36+(Math.random()-.5)*55)+"px");
+  card.style.setProperty("--out-y",(-dy*arena.clientHeight*.34+(Math.random()-.5)*42)+"px");
+  card.style.setProperty("--settle",((Math.random()-.5)*7).toFixed(1)+"deg");
+  card.style.setProperty("--rot",((Math.random()-.5)*18).toFixed(1)+"deg");
+  card.style.setProperty("--duration",lifetime+"ms");
+  arena.appendChild(card);
+  setTimeout(()=>{card.remove();occupied.delete(slot)},lifetime+75);
+}
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden)return;
+  for(const card of arena.querySelectorAll(".flashcard"))card.remove();
+  occupied.clear();priorSlot=-1;
+});
+flash();
+setInterval(flash,interval);
 })();
 </script>
 </body>
