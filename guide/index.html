@@ -39,6 +39,7 @@ h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spaci
 .word.cn{font-size:clamp(41px,4vw,62px);letter-spacing:.015em}
 .word.long{font-size:clamp(31px,3vw,50px)}
 .word.hyphen{font-size:clamp(37px,3.5vw,58px)}
+.word.xlong{font-size:clamp(29px,2.35vw,38px)}
 @keyframes scatter{
   0%{opacity:0;filter:blur(8px);transform:translate(-50%,-50%) translate(var(--in-x),var(--in-y)) rotate(var(--rot)) scale(.66)}
   13%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) rotate(var(--settle)) scale(1)}
@@ -50,7 +51,7 @@ h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spaci
 .small{color:#8b9a8b;font-size:14px;letter-spacing:.09em}
 .next{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#27583d;color:#fff;padding:12px 26px;border-radius:100px;font-weight:760;font-size:18px;min-height:52px}
 .next:hover{background:#173f2c}
-@media(max-width:800px){.page{width:calc(100% - 26px)}.topbar{min-height:67px}.brand{font-size:12px;gap:6px}.brand-mark{width:31px;height:31px}.back{font-size:12px}.overline{font-size:11px}h1{font-size:38px}.prompt{font-size:15px}.content{padding:8px 0}.arena{height:61dvh;min-height:360px}.flashcard{width:43%;height:clamp(83px,10.5vh,110px);padding:9px 7px;border-radius:16px}.flashcard:before{left:13px;right:13px}.word{font-size:clamp(38px,10vw,65px)}.word.cn{font-size:clamp(28px,7vw,46px)}.word.long{font-size:clamp(22px,5.6vw,39px)}.word.hyphen{font-size:clamp(25px,6.5vw,41px)}.footer{min-height:72px}.small{font-size:11px}.next{font-size:14px;min-height:46px;padding:10px 15px}}
+@media(max-width:800px){.page{width:calc(100% - 26px)}.topbar{min-height:67px}.brand{font-size:12px;gap:6px}.brand-mark{width:31px;height:31px}.back{font-size:12px}.overline{font-size:11px}h1{font-size:38px}.prompt{font-size:15px}.content{padding:8px 0}.arena{height:61dvh;min-height:360px}.flashcard{width:43%;height:clamp(83px,10.5vh,110px);padding:9px 7px;border-radius:16px}.flashcard:before{left:13px;right:13px}.word{font-size:clamp(38px,10vw,65px)}.word.cn{font-size:clamp(28px,7vw,46px)}.word.long{font-size:clamp(22px,5.6vw,39px)}.word.hyphen{font-size:clamp(25px,6.5vw,41px)}.word.xlong{font-size:clamp(16px,4.3vw,24px)}.footer{min-height:72px}.small{font-size:11px}.next{font-size:14px;min-height:46px;padding:10px 15px}}
 @media(prefers-reduced-motion:reduce){.flashcard{animation-timing-function:ease-in-out}@keyframes scatter{0%{opacity:0;transform:translate(-50%,-50%) scale(.97);filter:none}14%,77%{opacity:1;transform:translate(-50%,-50%) scale(1);filter:none}100%{opacity:0;transform:translate(-50%,-50%) scale(.97);filter:none}}}
 </style>
 </head>
@@ -74,11 +75,11 @@ h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spaci
 <script>
 (() => {
 "use strict";
-const TERMS=["LSP","本地化","QA","质量工程师","PM","TPM","TB","TM","MAO","CAT","TMS","语言资产","爆框","回填","伪翻译测试","In-Context"];
+const TERMS=["LSP","本地化","QA","质量工程师","PM","TPM","TB","TM","MAO","CAT","TMS","语言资产","爆框","回填","伪翻译测试","In-Context","MT","MTPE","Query Log","UI/UX QA","In-Context QA","拆包","Freelancer"];
 const arena=document.getElementById("arena");
 const directions=[[-1,-1],[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0]];
 const palette=["forest","sage","sand","blue","paper","sage","paper","forest"];
-const interval=820;
+const interval=500;
 const lifetime=4300;
 let stack=[],cycle=0,turn=0;
 const occupied=new Set();
@@ -118,6 +119,7 @@ function flash(){
   if(/[\u3400-\u9fff]/.test(term))word.classList.add("cn");
   if(term.length>=5)word.classList.add("long");
   if(term.includes("-"))word.classList.add("hyphen");
+  if(term.length>=10)word.classList.add("xlong");
   word.textContent=term;
   card.appendChild(word);
   card.style.setProperty("--x",points[slot][0]+"%");
