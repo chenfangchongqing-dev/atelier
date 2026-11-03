@@ -18,13 +18,13 @@ a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid #b9956c;o
 .brand-mark{display:grid;place-items:center;width:37px;height:37px;background:#264b39;border-radius:12px;color:white;font-weight:790}
 .back{font-size:15px;color:#718576;white-space:nowrap}
 .back:hover{color:#244f39}
-.content{flex:1;min-height:0;display:grid;grid-template-columns:minmax(250px,315px) minmax(0,1fr);gap:clamp(18px,2.8vw,48px);align-items:stretch;padding:18px 0 20px}
-.intro-panel{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;padding:0 0 22px 8px;position:relative;z-index:3}
-.intro-panel::before{content:"";height:4px;width:58px;border-radius:99px;background:#bd8b68;margin-bottom:27px}
-.overline{color:#ae8b69;font-size:13px;font-weight:790;letter-spacing:.18em;line-height:1.6;margin:0 0 12px}
-h1{font-size:clamp(41px,4.1vw,62px);margin:0 0 22px;line-height:1.24;letter-spacing:-.04em;font-weight:800}
-.prompt{max-width:300px;margin:0;color:#859889;font-size:clamp(17px,1.55vw,22px);line-height:1.6}
-.arena{position:relative;width:100%;height:100%;min-height:360px;overflow:hidden;isolation:isolate;border-radius:20px}
+.content{flex:1;min-height:0;display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:16px 0 16px}
+.intro-panel{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;flex:none;padding:0 0 6px 6px;position:relative;z-index:3}
+.intro-panel::before{content:"";height:4px;width:62px;border-radius:99px;background:#bd8b68;margin-bottom:13px}
+.overline{color:#ae8b69;font-size:13px;font-weight:790;letter-spacing:.18em;line-height:1.6;margin:0 0 5px}
+h1{font-size:clamp(48px,4.5vw,64px);margin:0 0 5px;line-height:1.2;letter-spacing:-.04em;font-weight:800;white-space:nowrap}
+.prompt{max-width:none;margin:0;color:#859889;font-size:clamp(18px,1.5vw,23px);line-height:1.45}
+.arena{position:relative;flex:1;min-height:300px;width:100%;height:auto;overflow:hidden;isolation:isolate;border-radius:20px}
 .arena:before{content:"";position:absolute;inset:8% 12%;background:radial-gradient(ellipse at center,#eaf1e8aa 0%,transparent 69%);pointer-events:none}
 .arena:after{content:"";position:absolute;inset:0;border:1px dashed #b9cbb73b;border-radius:20px;pointer-events:none}
 .flashcard{position:absolute;z-index:2;left:var(--x);top:var(--y);width:clamp(195px,25%,300px);height:clamp(102px,15.5vh,147px);display:flex;align-items:center;justify-content:center;gap:0;padding:13px 19px;text-align:center;border-radius:22px;border:1px solid #d5e3d6;background:#fffefa;box-shadow:0 16px 38px rgba(25,62,42,.12);color:#244d3b;opacity:0;pointer-events:none;animation:scatter var(--duration) cubic-bezier(.22,.75,.24,1) both;will-change:opacity,transform,filter}
@@ -53,7 +53,7 @@ h1{font-size:clamp(41px,4.1vw,62px);margin:0 0 22px;line-height:1.24;letter-spac
 .small{color:#8b9a8b;font-size:14px;letter-spacing:.09em}
 .next{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:transparent;color:#416a50;padding:6px 10px;border:1px solid #d5e3d6;border-radius:100px;font-weight:650;font-size:13px;min-height:34px;transition:background .15s,color .15s}
 .next:hover{background:#ecf2e9;color:#244b36}
-@media(max-width:800px){.page{width:calc(100% - 26px)}.topbar{min-height:67px}.brand{font-size:12px;gap:6px}.brand-mark{width:31px;height:31px}.back{font-size:12px}.content{display:flex;flex-direction:column;gap:8px;padding:10px 0 12px}.intro-panel{justify-content:flex-start;padding:2px 4px 0}.intro-panel::before{width:36px;height:3px;margin-bottom:10px}.overline{font-size:11px;margin:0 0 4px}h1{font-size:clamp(29px,6.8vw,40px);margin:0 0 3px}h1 br{display:none}.prompt{font-size:15px;max-width:none;line-height:1.4}.arena{flex:1;height:55dvh;min-height:255px}.flashcard{width:43%;height:clamp(83px,10.5vh,110px);padding:9px 7px;border-radius:16px}.flashcard:before{left:13px;right:13px}.word{font-size:clamp(38px,10vw,65px)}.word.cn{font-size:clamp(28px,7vw,46px)}.word.long{font-size:clamp(22px,5.6vw,39px)}.word.hyphen{font-size:clamp(25px,6.5vw,41px)}.word.xlong{font-size:clamp(16px,4.3vw,24px)}.footer{min-height:72px}.small{font-size:11px}.next{font-size:12px;min-height:32px;padding:5px 8px}}
+@media(max-width:800px){.page{width:calc(100% - 26px)}.topbar{min-height:67px}.brand{font-size:12px;gap:6px}.brand-mark{width:31px;height:31px}.back{font-size:12px}.content{display:flex;flex-direction:column;gap:6px;padding:10px 0 12px}.intro-panel{justify-content:flex-start;padding:2px 4px 3px}.intro-panel::before{width:36px;height:3px;margin-bottom:10px}.overline{font-size:11px;margin:0 0 4px}h1{font-size:clamp(34px,8.6vw,43px);margin:0 0 3px;white-space:nowrap}.prompt{font-size:15px;max-width:none;line-height:1.4}.arena{flex:1;height:55dvh;min-height:255px}.flashcard{width:43%;height:clamp(83px,10.5vh,110px);padding:9px 7px;border-radius:16px}.flashcard:before{left:13px;right:13px}.word{font-size:clamp(38px,10vw,65px)}.word.cn{font-size:clamp(28px,7vw,46px)}.word.long{font-size:clamp(22px,5.6vw,39px)}.word.hyphen{font-size:clamp(25px,6.5vw,41px)}.word.xlong{font-size:clamp(16px,4.3vw,24px)}.footer{min-height:72px}.small{font-size:11px}.next{font-size:12px;min-height:32px;padding:5px 8px}}
 @media(prefers-reduced-motion:reduce){.flashcard{animation-timing-function:ease-in-out}@keyframes scatter{0%{opacity:0;transform:translate(-50%,-50%) scale(.97);filter:none}14%,77%{opacity:1;transform:translate(-50%,-50%) scale(1);filter:none}100%{opacity:0;transform:translate(-50%,-50%) scale(.97);filter:none}}}
 </style>
 </head>
@@ -66,7 +66,7 @@ h1{font-size:clamp(41px,4.1vw,62px);margin:0 0 22px;line-height:1.24;letter-spac
   <main class="content">
     <div class="intro-panel">
       <p class="overline">TERMINOLOGY · FLASH GAME</p>
-      <h1>行业术语<br>快闪</h1>
+      <h1>行业术语快闪</h1>
       <p class="prompt">看到这些词，大家能认出几个？</p>
     </div>
     <div class="arena" id="arena" aria-label="行业术语卡从四面八方飞入，部分卡片从正上方垂直落下，并持续自动循环"></div>
