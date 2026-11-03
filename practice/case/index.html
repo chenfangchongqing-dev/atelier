@@ -49,6 +49,12 @@ h1{font-size:clamp(32px,3.7vw,59px);line-height:1.16;letter-spacing:-.045em;marg
 .discussion .main-question{font-weight:700;color:#244834;font-size:20px;line-height:1.55;padding:14px 0 0;margin-bottom:12px}
 .topic-strip{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0 8px}.topic-strip span{font-size:12px;color:#6c866f;padding:6px 10px;border:1px solid #e3ebe3;background:#f8faf7;border-radius:100px}
 .discussion-foot{padding-top:18px;border-top:1px solid #e7ede7;color:#86978b;font-size:12px;line-height:1.7}
+ .lesson-next{margin-top:25px;padding:20px 0;display:flex;justify-content:flex-end;align-items:center}
+.lesson-next a{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#2e694b;color:#fff;font-weight:740;font-size:17px;border-radius:14px;padding:15px 24px;min-height:55px;box-shadow:0 8px 20px rgba(39,85,53,.1)}
+.lesson-next a:hover{background:#21563a}
+.footer{margin:27px 0 0;padding-top:20px;border-top:1px solid #dce6dc;display:flex;gap:20px;align-items:center;justify-content:space-between;color:#849388;font-size:12px}
+.footer a{color:#417052;font-size:13px;font-weight:650}
+@media(max-width:780px){.lesson-next{justify-content:stretch}.lesson-next a{width:100%}}
 .reader{position:fixed;inset:0;z-index:80;background:rgba(18,29,23,.83);padding:clamp(12px,3vw,34px);display:flex;justify-content:center;align-items:center}.reader[hidden]{display:none!important}
 .reader-panel{background:#fff;max-width:1000px;width:100%;height:100%;border-radius:17px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 90px rgba(0,0,0,.2)}
 .reader-head{display:flex;align-items:center;gap:12px;border-bottom:1px solid #e5ece6;padding:15px 23px}.reader-head strong{flex:1;color:#264b35;font-size:17px}.reader-head span{font-size:12px;color:#819282}.reader-close{border:1px solid #d6e5d9;padding:9px 13px;border-radius:9px;background:#f1f7f2;color:#315f44;font-size:13px;font-weight:750}
@@ -187,6 +193,7 @@ body.reader-open{overflow:hidden}
       </div>
     </aside>
   </section>
+  <div class="lesson-next"><a href="../#feishu" aria-label="进入下一环节：飞书多维表格">进入下一环节 · 飞书多维表格 <span aria-hidden="true">→</span></a></div>
   <div class="footer"><span>真实客户案例 · 所有文件名称、字数及截止时间保留原始发布信息</span><a href="../">← 返回飞书与PM工作节点</a></div>
 </main>
 <div class="reader" id="reader" role="dialog" aria-label="全屏阅读客户原始发包消息" aria-modal="true" hidden>
