@@ -41,9 +41,9 @@ h1{font-size:clamp(38px,4.1vw,64px);margin:0 0 4px;line-height:1.22;letter-spaci
 .word.hyphen{font-size:clamp(37px,3.5vw,58px)}
 @keyframes scatter{
   0%{opacity:0;filter:blur(8px);transform:translate(-50%,-50%) translate(var(--in-x),var(--in-y)) rotate(var(--rot)) scale(.66)}
-  16%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) rotate(var(--settle)) scale(1.06)}
-  25%,63%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) rotate(var(--settle)) scale(1)}
-  84%{opacity:.7;filter:blur(0);transform:translate(-50%,-50%) translate(calc(var(--out-x) * .42),calc(var(--out-y) * .42)) rotate(var(--settle)) scale(.98)}
+  13%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) rotate(var(--settle)) scale(1)}
+  22%,82%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) rotate(var(--settle)) scale(1)}
+  91%{opacity:.45;filter:blur(2px);transform:translate(-50%,-50%) translate(calc(var(--out-x) * .42),calc(var(--out-y) * .42)) rotate(var(--settle)) scale(.98)}
   100%{opacity:0;filter:blur(5px);transform:translate(-50%,-50%) translate(var(--out-x),var(--out-y)) rotate(var(--rot)) scale(.8)}
 }
 .footer{min-height:77px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:18px}
@@ -78,8 +78,8 @@ const TERMS=["LSP","本地化","QA","质量工程师","PM","TPM","TB","TM","MAO"
 const arena=document.getElementById("arena");
 const directions=[[-1,-1],[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0]];
 const palette=["forest","sage","sand","blue","paper","sage","paper","forest"];
-const interval=470;
-const lifetime=2380;
+const interval=820;
+const lifetime=4300;
 let stack=[],cycle=0,turn=0;
 const occupied=new Set();
 let priorSlot=-1,priorDirection=-1;
