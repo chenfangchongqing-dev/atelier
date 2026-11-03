@@ -13,6 +13,11 @@
   --sky:#e8eff1;--shadow:0 16px 48px rgba(35,57,42,.07)
 }
 *{box-sizing:border-box}
+/* 教学分段揭示：完成真实接单讨论前，不提前展示飞书环节 */
+body:not(.show-next-lesson) #feishu,
+body:not(.show-next-lesson) #tools,
+body:not(.show-next-lesson) #demo{display:none}
+
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
 button,a{font:inherit}
@@ -317,6 +322,15 @@ body.feishu-screen-open{overflow:hidden}
     if(event.key==='Escape' && !feishuModal.hidden)closeFeishuModal();
   });
 })();
+</script>
+<script>
+/* 由真实接单页的“进入下一环节”触发展示，原内容及交互保留。 */
+if (new URLSearchParams(location.search).get('stage') === 'next') {
+  document.body.classList.add('show-next-lesson');
+  if (location.hash === '#feishu') {
+    window.addEventListener('load', () => document.getElementById('feishu').scrollIntoView({block:'start'}));
+  }
+}
 </script>
 </body>
 </html>
