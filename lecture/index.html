@@ -51,51 +51,7 @@
 .lesson-finish:hover{transform:translateY(-2px);background:#fffaf1}.lesson-finish:focus-visible{outline:4px solid #e6b569;outline-offset:5px}
 .lesson-topnav{position:fixed;top:13px;right:18px;left:auto;z-index:15;display:flex;align-items:center;gap:8px}.lesson-topnav a{background:#183b32db;color:#f3fbf3;text-decoration:none;font:600 12px Inter,"PingFang SC",sans-serif;padding:8px 12px;border:1px solid #ffffff26;border-radius:999px}.lesson-topnav a:hover{background:#326650}.lesson-topnav a:focus-visible{outline:2px solid #dcb67f;outline-offset:3px}
 
-/* Interactive flow-to-roles classroom teaching slide */
-.workflow-slide .slide-contents{padding-top:62px;padding-bottom:45px}
-.workflow-slide .slide-contents::before{top:38px}
-.workflow-slide .header{margin-bottom:13px}
-.workflow-slide .header h1{font-size:48px}
-.workflow-slide .fr-title{font-size:23px;margin-top:9px}
-.wf-topline{display:flex;justify-content:space-between;align-items:center;height:35px;margin-bottom:12px}
-.wf-guidance{font-size:19px;font-weight:650;color:#6e8176}
-.wf-ticks{display:inline-block;font-size:16px;font-weight:750;color:#377452;background:#e8f1e8;border:1px solid #d6e5d9;border-radius:20px;padding:5px 14px}
-.wf-rows{display:grid;grid-template-rows:repeat(5,103px);gap:9px;position:relative;padding-right:44px}
-.wf-row{display:grid;grid-template-columns:minmax(0,1fr) 64px minmax(0,1.06fr);gap:10px;align-items:center;min-width:0}
-.wf-step,.wf-role{height:100%;border-radius:18px;border:1.5px solid #dce5dc;display:flex;align-items:center;min-width:0;position:relative}
-.wf-step{padding:12px 23px;gap:20px}
-.wf-step.wf-green,.wf-role.wf-green{background:#e9f0e7;border-color:#d1dfd1}
-.wf-step.wf-blue,.wf-role.wf-blue{background:#eaf0f1;border-color:#d7e1e1}
-.wf-step.wf-sand,.wf-role.wf-sand{background:#f5eee5;border-color:#e7dacd}
-.wf-num{display:grid;place-items:center;flex:0 0 58px;height:62px;border-radius:13px;background:#d4e3d4;color:#38664e;font-weight:800;font-size:29px}
-.wf-blue .wf-num{background:#d7e6ea;color:#547885}.wf-sand .wf-num{background:#ecd8c0;color:#9a714d}
-.wf-steptext,.wf-roletext{min-width:0;display:flex;flex-direction:column;gap:5px}
-.wf-steptext strong{font-size:31px;line-height:1.12;font-weight:760;color:#183e33;white-space:nowrap}
-.wf-steptext em{font-size:17px;color:#6e8179;line-height:1.26;font-style:italic;font-family:Georgia,'Times New Roman',serif}
-.wf-icon{width:52px;height:52px;flex:0 0 52px;margin-left:auto;color:#568273;opacity:.8}
-.wf-link{text-align:center;font-size:37px;color:#bf9a76;font-weight:300;transition:opacity .2s;opacity:0}
-.wf-link[data-shown="1"]{opacity:1}
-.wf-role{padding:9px 19px;gap:20px;opacity:0;visibility:hidden;transform:translateX(14px);transition:opacity .28s ease,transform .28s ease;}
-.wf-role[data-shown="1"]{opacity:1;visibility:visible;transform:none}
-.wf-initial{flex:0 0 116px;min-width:0;font-size:27px;font-weight:780;color:#b47b5a;letter-spacing:.02em;text-align:center;border-right:1px solid #cbd9d0;padding-right:15px;white-space:nowrap}
-.wf-roletext strong{font-size:28px;color:#194235;font-weight:750;line-height:1.06;white-space:nowrap}
-.wf-roletext em{font:italic 17px Georgia,'Times New Roman',serif;color:#6a8175}
-.wf-roletext small{font-size:17px;color:#697d73;white-space:nowrap}
-.wf-pm-loop{position:absolute;right:-7px;top:0;height:100%;width:44px;opacity:0;visibility:hidden;transition:opacity .4s;overflow:visible}
-.workflow-slide.pm-focus .wf-pm-loop{opacity:1;visibility:visible}
-.workflow-slide.pm-focus .wf-role.pm-start,.workflow-slide.pm-focus .wf-role.pm-end{border:3px solid #5c9975;background:#e0eee1;box-shadow:0 0 0 4px #d8e8d9}
-.wf-conclusion{margin-top:14px;border-left:5px solid #c18a66;padding:3px 0 3px 17px;color:#2d6046;font-size:23px;font-weight:740;line-height:1.2;opacity:0;transition:opacity .3s}
-.workflow-slide.pm-focus .wf-conclusion{opacity:1}
-@media(prefers-reduced-motion:reduce){.wf-role,.wf-link,.wf-conclusion,.wf-pm-loop{transition:none!important}}
-</style><meta content="工作坊知识讲解：原课件第3—11页、第13页。翻译项目管理行业角色、流程、术语、RACI与AI实操衔接。" name="description"/></head><body><main aria-label="AI赋能翻译项目管理 HTML幻灯片" id="stage"><section class="slide figure"><div class="slide-contents"><img alt="图1 中法双语语言服务行业外包模式，D’après Dunne et Dunne, 2011, p.4" class="full-figure" src="assets/lecture_fig1.webp"/></div></section><section class="slide default workflow-slide" aria-label="翻译项目管理流程及各岗位职责分步展示"><div class="slide-contents">
-<header class="header"><div class="eyebrow">PARTIE 01 · PROCESSUS &amp; RÔLES</div><h1>翻译项目管理流程及各岗位职责</h1><div class="fr-title">Processus d’un projet de traduction et rôles associés</div></header>
-<div class="wf-topline"><span class="wf-guidance" id="wfGuidance"></span><span class="wf-ticks" id="wfTicks" aria-live="polite">流程</span></div>
-<div class="wf-rows" aria-label="五个翻译流程与五组对应职责">
-<div class="wf-row" data-wf-row="0"><div class="wf-step wf-green" data-wf-index="0"><span class="wf-num">01</span><div class="wf-steptext"><strong>需求与立项</strong><em>Analyse du besoin · Lancement</em></div><svg class="wf-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="7" width="30" height="35" rx="4"/><path d="M18 7v-3h12v3M16 19l3 3 5-6M27 21h6M16 31l3 3 5-6M27 33h6"/></svg></div><span class="wf-link" data-wf-link="0" aria-hidden="true">→</span><div class="wf-role wf-green pm-start" data-wf-role="0" aria-hidden="true"><span class="wf-initial">PM</span><div class="wf-roletext"><strong>项目经理</strong><em>Chef de projet</em><small>确认需求 · 规划排期 · 组织资源</small></div></div></div><div class="wf-row" data-wf-row="1"><div class="wf-step wf-blue" data-wf-index="1"><span class="wf-num">02</span><div class="wf-steptext"><strong>译前工程</strong><em>Préparation technique</em></div><svg class="wf-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12h28v26H10zM10 20h28M18 12V7M30 12V7"/><path d="M18 27h5m-5 6h13"/><circle cx="31" cy="28" r="3"/></svg></div><span class="wf-link" data-wf-link="1" aria-hidden="true">→</span><div class="wf-role wf-blue" data-wf-role="1" aria-hidden="true"><span class="wf-initial">LE</span><div class="wf-roletext"><strong>本地化工程师</strong><em>Ingénieur en localisation</em><small>文件预处理 · 格式转换 · 工具配置</small></div></div></div><div class="wf-row" data-wf-row="2"><div class="wf-step wf-sand" data-wf-index="2"><span class="wf-num">03</span><div class="wf-steptext"><strong>翻译与审校</strong><em>Traduction · Révision</em></div><svg class="wf-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 13h28M23 8v27M11 33l12-20M15 24l16 11M27 9h11v29H27"/></svg></div><span class="wf-link" data-wf-link="2" aria-hidden="true">→</span><div class="wf-role wf-sand" data-wf-role="2" aria-hidden="true"><span class="wf-initial">T · E/P</span><div class="wf-roletext"><strong>译员与审校人员</strong><em>Traducteur · Réviseur · Relecteur</em><small>翻译 · 语言审校 · 术语与风格统一</small></div></div></div><div class="wf-row" data-wf-row="3"><div class="wf-step wf-blue" data-wf-index="3"><span class="wf-num">04</span><div class="wf-steptext"><strong>排版与质检</strong><em>Mise en page · Contrôle qualité</em></div><svg class="wf-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="10" width="34" height="29" rx="4"/><path d="M7 18h34M14 14h2M20 14h2M14 26l6 6 14-13"/></svg></div><span class="wf-link" data-wf-link="3" aria-hidden="true">→</span><div class="wf-role wf-blue" data-wf-role="3" aria-hidden="true"><span class="wf-initial">DTP · QA</span><div class="wf-roletext"><strong>桌面排版与质量保证</strong><em>PAO · Assurance qualité</em><small>版面恢复 · 文件检查 · 交付前质检</small></div></div></div><div class="wf-row" data-wf-row="4"><div class="wf-step wf-green" data-wf-index="4"><span class="wf-num">05</span><div class="wf-steptext"><strong>交付、结算与复盘</strong><em>Livraison · Règlement · Bilan</em></div><svg class="wf-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 15l16-8 16 8v21l-16 8-16-8zM8 15l16 8 16-8M24 23v21M16 11l16 8"/></svg></div><span class="wf-link" data-wf-link="4" aria-hidden="true">→</span><div class="wf-role wf-green pm-end" data-wf-role="4" aria-hidden="true"><span class="wf-initial">PM</span><div class="wf-roletext"><strong>项目经理</strong><em>Chef de projet</em><small>核验交付 · 统计工作量 · 项目复盘</small></div></div></div>
-<svg class="wf-pm-loop" viewBox="0 0 59 570" role="img" aria-label="项目经理协调贯穿五个阶段"><path d="M8 552H22Q49 552 49 528V44Q49 19 22 19H6" fill="none" stroke="#417b5a" stroke-width="5" stroke-linecap="round"/><path d="M19 8L6 19L19 30" fill="none" stroke="#417b5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-</div>
-<div class="wf-conclusion" id="wfConclusion" aria-live="polite">PM 并非亲自完成所有环节，而是贯穿全过程，组织协作、把关交付。</div>
-</div></section><section class="slide figure"><div class="slide-contents"><img alt="图2 中法双语翻译项目管理工作流程，D’après Nevmerzhytski et al., 2021, p.100" class="full-figure" src="assets/lecture_fig2.webp"/></div></section><section class="slide default"><div class="slide-contents"><header class="header"><div class="eyebrow">PARTIE 01 · PROCESSUS</div><h1>把项目看成三条协作工作线</h1><div class="fr-title">Trois lignes de travail coordonnées</div></header>
+</style><meta content="工作坊知识讲解：原课件第3—11页、第13页。翻译项目管理行业角色、流程、术语、RACI与AI实操衔接。" name="description"/></head><body><main aria-label="AI赋能翻译项目管理 HTML幻灯片" id="stage"><section class="slide figure"><div class="slide-contents"><img alt="图1 中法双语语言服务行业外包模式，D’après Dunne et Dunne, 2011, p.4" class="full-figure" src="assets/lecture_fig1.webp"/></div></section><section class="slide figure" aria-label="翻译项目管理流程及各岗位职责"><div class="slide-contents"><img alt="翻译项目管理流程及各岗位职责：从需求立项、译前工程、翻译审校、排版质检到交付结算复盘，展示对应岗位及项目经理贯穿全程" class="full-figure" src="assets/flow_roles_uploaded.webp"/></div></section><section class="slide figure"><div class="slide-contents"><img alt="图2 中法双语翻译项目管理工作流程，D’après Nevmerzhytski et al., 2021, p.100" class="full-figure" src="assets/lecture_fig2.webp"/></div></section><section class="slide default"><div class="slide-contents"><header class="header"><div class="eyebrow">PARTIE 01 · PROCESSUS</div><h1>把项目看成三条协作工作线</h1><div class="fr-title">Trois lignes de travail coordonnées</div></header>
 <div class="lanes">
 <div class="lane lane-pm"><div class="lane-name"><span>PM</span><h3>管理线</h3><i>Gestion</i></div><div class="lane-steps"><span>接单与需求分析</span><span>排期和发包</span><span>跟进与协调</span><span>验收和交付</span></div></div>
 <div class="lane lane-engineer"><div class="lane-name"><span>LE</span><h3>技术线</h3><i>Ingénierie</i></div><div class="lane-steps"><span>文件预处理</span><span>CAT项目配置</span><span>目标文件导出</span><span>语言资产维护</span></div></div>
@@ -131,29 +87,16 @@
 <tr><td>正式交付与结项</td><td><b class="ra">A/R</b></td><td><b class="ri">I</b></td><td><b class="ri">I</b></td><td><b class="ri">I</b></td><td><b class="rc">C</b></td></tr>
 </tbody></table></div><div class="footnote">教学示意矩阵，并非所有公司的统一制度；实际分工应依据组织结构、合同及项目风险调整。</div></div></section><section class="slide figure"><div class="slide-contents"><img alt="图3 中法双语MTPE管理流程四种实施情境，D’après Nevmerzhytski et al., 2021, p.100" class="full-figure" src="assets/lecture_fig3.webp"/></div></section><section class="slide section-break"><div class="slide-contents"><div class="section-numeral">02</div><div class="section-copy"><span>DE LA THÉORIE À LA PRATIQUE</span><h1>AI赋能<br/>翻译项目管理</h1><p>Planification · Répartition · Suivi · Livraison</p><div class="section-divider"></div></div><a aria-label="进入下一环节：客户微信情境" class="lesson-finish" href="../wechat/">进入下一环节 · 客户微信情境 →</a></div></section></main><div aria-hidden="true" id="click-left"></div><div aria-hidden="true" id="click-right"></div><div id="keys">← / → 翻页 · F 全屏 · ? 帮助</div><div class="lesson-topnav"><a href="../guide/">← 返回术语快闪</a></div><nav aria-label="幻灯片控制" id="hud"><button aria-label="上一页" id="prev">‹</button><span id="counter">01 / 10</span><button aria-label="下一页" id="next">›</button><button aria-label="全屏" id="fs">⛶</button><button aria-label="按键提示" id="helpBtn">?</button></nav><div id="help"><div class="help-card"><h3>放映操作</h3>→ / 空格：下一步或下一页<br/>←：上一步或上一页<br/>Home / End：首页 / 末页<br/>F：全屏放映<br/>Esc：退出帮助或全屏<small>这是用于投屏的HTML幻灯片，无练习提交或任务操作功能。</small></div></div><script>
 const slides=[...document.querySelectorAll('.slide')];
-const workflowSlide=document.querySelector('.workflow-slide');
-const workflowIndex=slides.indexOf(workflowSlide);
-let current=-1, workflowStep=0;
+let current=-1;
 function resize(){let w=innerWidth,h=innerHeight;let s=Math.min(w/1600,h/900);document.querySelector('#stage').style.setProperty('--scale',s);}
-function setWorkflowStep(n){
- workflowStep=Math.max(0,Math.min(6,n));
- workflowSlide.querySelectorAll('[data-wf-role]').forEach((el,i)=>{const shown=i<workflowStep;el.dataset.shown=shown?'1':'0';el.setAttribute('aria-hidden',shown?'false':'true');});
- workflowSlide.querySelectorAll('[data-wf-link]').forEach((el,i)=>el.dataset.shown=i<workflowStep?'1':'0');
- workflowSlide.classList.toggle('pm-focus',workflowStep===6);
- const labels=['先看流程','岗位 1 / 5','岗位 2 / 5','岗位 3 / 5','岗位 4 / 5','岗位 5 / 5','PM · 全过程'];
- workflowSlide.querySelector('#wfTicks').textContent=labels[workflowStep];
- workflowSlide.querySelector('#wfGuidance').textContent=workflowStep===0?'':workflowStep<6?'':'PM 贯穿全程：从立项到交付，组织与协调各项工作';
-}
 function go(n){
- const former=current;
  current=Math.max(0,Math.min(slides.length-1,n));
  slides.forEach((s,i)=>{s.classList.toggle('active',i===current);s.setAttribute('aria-hidden',i!==current?'true':'false')});
- if(current===workflowIndex&&former!==current)setWorkflowStep(former>current?6:0);
  document.querySelector('#counter').textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
  history.replaceState(null,'','#'+(current+1));
 }
-function next(){if(current===workflowIndex&&workflowStep<6){setWorkflowStep(workflowStep+1);return;}go(current+1)}
-function prev(){if(current===workflowIndex&&workflowStep>0){setWorkflowStep(workflowStep-1);return;}go(current-1)}
+function next(){go(current+1)}
+function prev(){go(current-1)}
 function fullscreen(){if(document.fullscreenElement){document.exitFullscreen?.()}else{document.documentElement.requestFullscreen?.()}}
 document.querySelector('#prev').addEventListener('click',prev);
 document.querySelector('#next').addEventListener('click',next);
